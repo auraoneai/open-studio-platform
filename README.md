@@ -16,9 +16,9 @@ security, evidence, UI, and release rules are implemented and tested once.
 
 | Package | Job | Workspace version | Supported consumption today |
 | --- | --- | --- | --- |
-| [`@auraone/proofline-oss`](packages/proofline-oss/README.md) | OSS-safe tokens and accessible evidence UI primitives. | `0.1.1` | Public npm package or `workspace:*`. |
-| [`@auraone/aura-ide-kit`](packages/aura-ide-kit/README.md) | IDE-class React components and explicit SSR posture. | `0.2.0` | Public npm package or `workspace:*`. |
-| [`@auraone/platform-contracts`](packages/platform-contracts/README.md) | Runtime-neutral TypeScript contracts for trust and release behavior. | `0.3.0` | Public npm package or `workspace:*`. |
+| [`@auraone/proofline-oss`](packages/proofline-oss/README.md) | OSS-safe tokens and accessible evidence UI primitives. | `0.1.1` | Public npm `0.1.0` or `workspace:*`; `0.1.1` is release-ready. |
+| [`@auraone/aura-ide-kit`](packages/aura-ide-kit/README.md) | IDE-class React components and explicit SSR posture. | `0.2.0` | `workspace:*`; first public npm release is pending registry authorization. |
+| [`@auraone/platform-contracts`](packages/platform-contracts/README.md) | Runtime-neutral TypeScript contracts for trust and release behavior. | `0.3.0` | `workspace:*`; first public npm release is pending registry authorization. |
 | `@auraone/open-studio-platform` | Private workspace orchestrator for packages, Rust crates, templates, docs, and evidence checks. | `0.4.0` | Source workspace only; it is not an installable runtime package. |
 
 The repository also owns the Tauri template, Rust extension crates, docs
@@ -89,8 +89,11 @@ workspace does not implement those workflows.
 
 Status verified on **July 13, 2026**:
 
+- `@auraone/proofline-oss@0.1.0` is the current public npm package.
 - `@auraone/proofline-oss@0.1.1`, `@auraone/aura-ide-kit@0.2.0`, and
-  `@auraone/platform-contracts@0.3.0` are public npm packages.
+  `@auraone/platform-contracts@0.3.0` pass their package gates and are
+  release-ready, but npm publication is blocked until write authorization
+  satisfies the registry's 2FA-bypass requirement.
 - `auraoneai/open-studio-platform` is the public canonical source repository
   for the shared packages, contracts, templates, and release controls.
 - `@auraone/open-studio-platform@0.4.0` remains a private workspace

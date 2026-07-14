@@ -12,16 +12,13 @@ keychain, crash, event-log, or extension boundaries.
 manifest shapes stay consistent across Rubric, Agent, and Robotics while each
 consumer retains control of when and how a network or native capability runs.
 
-## Install
+## Install From Source
 
-Status verified on **July 13, 2026**: version `0.3.0` is published on the public
-npm registry.
+Status verified on **July 13, 2026**: version `0.3.0` passes its package gates
+but is not yet published on the public npm registry. Use `workspace:*` from the
+canonical source checkout until registry authorization is restored.
 
-```bash
-npm install @auraone/platform-contracts@0.3.0
-```
-
-For workspace development from the `open-studio-platform` root:
+From the `open-studio-platform` root:
 
 ```bash
 corepack enable
@@ -97,6 +94,6 @@ schema/privacy policy, security checklists, and release-flow contracts.
 
 ## Release Truth
 
-The public package is built from the canonical source repository after
-typecheck, contract tests, emitted-file inspection, and npm publication
-verification. Pin the exact version beside the consuming Studio release.
+The `0.3.0` source candidate passes typecheck, contract tests, and emitted-file
+inspection. Do not document an npm install command until the registry exposes
+the exact version and integrity record.

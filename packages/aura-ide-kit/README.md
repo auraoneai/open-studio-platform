@@ -12,16 +12,13 @@ without rebuilding complex interaction and accessibility behavior per product.
 graduate into Proofline only after multi-product use proves a stable,
 product-neutral public contract.
 
-## Install
+## Install From Source
 
-Status verified on **July 13, 2026**: version `0.2.0` is published on the public
-npm registry.
+Status verified on **July 13, 2026**: version `0.2.0` passes its package gates
+but is not yet published on the public npm registry. Use `workspace:*` from the
+canonical source checkout until registry authorization is restored.
 
-```bash
-npm install @auraone/aura-ide-kit@0.2.0
-```
-
-For workspace development from the `open-studio-platform` root:
+From the `open-studio-platform` root:
 
 ```bash
 corepack enable
@@ -137,7 +134,7 @@ tarball surface is limited by the package `files` allowlist.
 
 ## Release Truth
 
-The public package is built from the canonical source repository after
-typecheck, component tests, accessibility checks, SSR-posture verification,
-and packed-file inspection. Pin the exact version and retain React peer
-dependency compatibility in consuming Studios.
+The `0.2.0` source candidate passes typecheck, component tests, accessibility
+checks, SSR-posture verification, and packed-file inspection. Do not document
+an npm install command until the registry exposes the exact version and
+integrity record.
