@@ -76,4 +76,4 @@ jobs:
           fetch-depth: 0
       - uses: docker://zricethezav/gitleaks:v8.24.3
         with:
-          args: detect --source=/github/workspace --config=/github/workspace/configs/gitleaks/gitleaks.toml --redact --no-banner
+          args: detect --source=/github/workspace --config=/github/workspace/configs/gitleaks/gitleaks.toml --redact --no-banner --no-git
