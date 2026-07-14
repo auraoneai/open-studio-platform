@@ -95,6 +95,13 @@ node --test tests/platform-contracts.test.mjs
 The root platform suite also exercises flagship integration, intake roles,
 schema/privacy policy, security checklists, and release-flow contracts.
 
+## Next Action
+
+Install the pinned package, select only the contracts required by the host,
+implement each native or network adapter explicitly, and test consent,
+redaction, authentication, signature, persistence, and failure behavior at
+every boundary the host enables.
+
 ## Release Truth
 
 The public `0.3.0` package passes typecheck, contract tests, emitted-file
