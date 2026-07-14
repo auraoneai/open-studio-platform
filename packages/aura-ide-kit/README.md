@@ -136,6 +136,13 @@ Tests cover component contracts, command registration, focus and keyboard
 behavior, accessible semantics, and the SSR posture inventory. The built
 tarball surface is limited by the package `files` allowlist.
 
+## Next Action
+
+Install the pinned package with Proofline, import the shared styles once,
+review every selected component's SSR posture, and verify keyboard,
+accessibility, responsive, and desktop-webview behavior in the consuming
+workbench.
+
 ## Release Truth
 
 The public `0.2.1` package passes typecheck, component tests, accessibility

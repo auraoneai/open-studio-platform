@@ -105,6 +105,12 @@ status labeling, and chart alternatives. `verify:public-assets` rejects private
 font names and binaries, remote font imports, and other disallowed public
 assets.
 
+## Next Action
+
+Install the pinned package, import its styles or token CSS once at the
+application boundary, and validate the consuming page with keyboard,
+screen-reader, chart-alternative, and public-asset checks before release.
+
 ## Release Truth
 
 The public `0.1.1` package passes typecheck, component tests, asset-boundary
