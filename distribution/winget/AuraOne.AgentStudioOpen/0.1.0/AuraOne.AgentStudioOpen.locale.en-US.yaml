@@ -1,0 +1,21 @@
+PackageIdentifier: AuraOne.AgentStudioOpen
+PackageVersion: 0.1.0
+PackageLocale: en-US
+Publisher: AuraOne
+PublisherUrl: https://auraone.ai
+PublisherSupportUrl: https://auraone.ai/open/support
+PrivacyUrl: https://auraone.ai/open/privacy
+Author: AuraOne
+PackageName: Agent Studio Open
+PackageUrl: https://auraone.ai/open/agent-studio-open
+License: MIT
+LicenseUrl: https://github.com/auraoneai/agent-studio-open/blob/main/LICENSE
+ShortDescription: Open-source desktop IDE for MCP server debugging and agent trace replay.
+Description: Agent Studio Open is the AuraOne Open Studio flagship for MCP discovery, trace recording, replay, and Cloud intake handoff.
+Tags:
+  - auraone
+  - agents
+  - mcp
+  - tauri
+ManifestType: defaultLocale
+ManifestVersion: 1.6.0

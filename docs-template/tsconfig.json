@@ -1,0 +1,10 @@
+{
+  "extends": "@docusaurus/tsconfig",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "strict": true,
+    "noEmit": true,
+    "types": ["node"]
+  },
+  "include": ["src", "docusaurus.config.ts", "sidebars.ts"]
+}

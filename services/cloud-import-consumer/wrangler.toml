@@ -1,0 +1,25 @@
+name = "auraone-open-cloud-import-consumer"
+main = "src/index.mjs"
+compatibility_date = "2026-05-20"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = false
+
+[[queues.consumers]]
+queue = "auraone-open-cloud-import"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 3
+dead_letter_queue = "auraone-open-cloud-import-dlq"
+
+[[r2_buckets]]
+binding = "INTAKE_BUCKET"
+bucket_name = "auraone-open-intake-packets"
+
+[[r2_buckets]]
+binding = "CLOUD_IMPORT_AUDIT_BUCKET"
+bucket_name = "auraone-open-cloud-import-audit"
+
+[vars]
+ENVIRONMENT = "production"
+AURAONE_CLOUD_BASE_URL = "https://auraone.ai/cloud"
+AURAONE_CLOUD_IMPORT_API_URL = "https://auraone.ai/api/open-studio/imports"

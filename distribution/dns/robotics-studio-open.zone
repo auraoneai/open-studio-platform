@@ -1,0 +1,7 @@
+; Draft DNS records for Robotics Studio Open.
+; Date: 2026-05-13
+; Apply in the auraone.ai authoritative DNS zone after infra approval.
+
+robotics-studio.auraone.ai. 300 IN CNAME auraone-open.pages.dev.
+install.auraone.ai. 300 IN CNAME auraone-open-install.pages.dev.
+_robotics-studio-open.auraone.ai. 300 IN TXT "product=robotics-studio-open;status=reserved;date=2026-05-13"

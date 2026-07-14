@@ -1,0 +1,13 @@
+* @auraone/platform-owner
+
+/crates/ @auraone/platform-owner
+/schemas/ @auraone/platform-owner
+/scripts/sign-* @auraone/platform-owner
+/scripts/notarize.sh @auraone/platform-owner
+/.github-templates/workflows/ @auraone/platform-owner
+/templates/tauri-app/ @auraone/platform-owner
+/packages/aura-ide-kit/ @auraone/platform-owner @auraone/auraglass
+/docs-template/ @auraone/platform-owner @auraone/docs
+/security/ @auraone/platform-owner @auraone/security
+/compliance/ @auraone/platform-owner @auraone/security
+/rfcs/ @auraone/platform-owner

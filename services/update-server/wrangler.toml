@@ -1,0 +1,16 @@
+name = "auraone-open-update-server"
+main = "src/index.mjs"
+compatibility_date = "2026-05-13"
+workers_dev = false
+
+routes = [
+  { pattern = "updates.auraone.ai/*", zone_name = "auraone.ai" },
+  { pattern = "updates2.auraone.ai/*", zone_name = "auraone.ai" }
+]
+
+[[r2_buckets]]
+binding = "UPDATE_BUCKET"
+bucket_name = "auraone-open-updates"
+
+[vars]
+ENVIRONMENT = "production"

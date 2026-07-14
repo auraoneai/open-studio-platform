@@ -1,0 +1,26 @@
+name: Flagship Template Sync Gate
+
+on:
+  workflow_call:
+    inputs:
+      platform-version:
+        required: true
+        type: string
+      max-age-days:
+        required: false
+        type: string
+        default: "7"
+
+jobs:
+  template-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Block release when platform template sync is overdue
+        env:
+          OPEN_STUDIO_PLATFORM_VERSION: ${{ inputs.platform-version }}
+          OPEN_STUDIO_PLATFORM_SYNC_MAX_AGE_DAYS: ${{ inputs.max-age-days }}
+        run: bash opensource/open-studio-platform/scripts/check-template-sync.sh .open-studio-platform-sync.json

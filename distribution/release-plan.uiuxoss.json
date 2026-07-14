@@ -1,0 +1,131 @@
+{
+  "$schema": "https://schemas.auraone.ai/open-studio/release-plan/v1.json",
+  "name": "release(oss): publish Proofline UI/UX upgrade across all channels",
+  "mode": "dry-run",
+  "owner": "AuraOne Open release owner",
+  "rollbackOwner": "AuraOne Open release owner",
+  "targetDate": null,
+  "sourceRepository": "gchahal1982/AuraFoundry",
+  "sourceCommit": null,
+  "sourceState": "uncommitted-staged-worktree",
+  "sourceCommitRequirement": "Record one exact 40-character pushed commit after the UI/UX and release metadata are reviewed; every artifact must be built from that commit.",
+  "products": [
+    {
+      "id": "rubric-studio-open",
+      "archivalEvidence": "distribution/release-evidence/rubric-studio-open/0.1.0.json",
+      "stagedEvidence": "distribution/release-evidence/rubric-studio-open/0.2.0.json",
+      "sourceVersion": "0.2.0",
+      "releaseVersion": "0.2.0",
+      "status": "blocked",
+      "metadata": {
+        "homebrew": "distribution/homebrew/Casks/rubric-studio-open.rb",
+        "homebrewArchive": "distribution/homebrew/archive/0.1.0/rubric-studio-open.rb",
+        "winget": "distribution/winget/AuraOne.RubricStudioOpen/0.2.0",
+        "linux": "distribution/linux/linux-artifact-readiness.json",
+        "windows": "distribution/windows/windows-package-identity-readiness.json",
+        "updater": "distribution/release-evidence/rubric-studio-open/0.2.0.json"
+      },
+      "blockers": [
+        "Record the exact pushed source commit for 0.2.0.",
+        "Build signed DMG, MSI, AppImage, deb, and rpm artifacts from that commit.",
+        "Attach checksums, signatures, notarization, SBOM, provenance, clean-install, update, rollback, package-manager, and live-channel verification."
+      ]
+    },
+    {
+      "id": "agent-studio-open",
+      "archivalEvidence": "distribution/release-evidence/agent-studio-open/0.1.0.json",
+      "stagedEvidence": "distribution/release-evidence/agent-studio-open/0.2.0.json",
+      "sourceVersion": "0.2.0",
+      "releaseVersion": "0.2.0",
+      "status": "blocked",
+      "metadata": {
+        "homebrew": "distribution/homebrew/Casks/agent-studio-open.rb",
+        "homebrewArchive": "distribution/homebrew/archive/0.1.0/agent-studio-open.rb",
+        "winget": "distribution/winget/AuraOne.AgentStudioOpen/0.2.0",
+        "linux": "distribution/linux/linux-artifact-readiness.json",
+        "windows": "distribution/windows/windows-package-identity-readiness.json",
+        "updater": "distribution/release-evidence/agent-studio-open/0.2.0.json"
+      },
+      "blockers": [
+        "Record the exact pushed source commit for 0.2.0.",
+        "Replace the archival unsigned Windows artifact with a trusted Authenticode-signed MSI and build every supported artifact from the same commit.",
+        "Attach checksums, signatures, notarization, SBOM, provenance, clean-install, update, rollback, package-manager, Marketplace, and live-channel verification."
+      ]
+    },
+    {
+      "id": "robotics-studio-open",
+      "archivalEvidence": "distribution/release-evidence/robotics-studio-open/0.1.0.json",
+      "stagedEvidence": "distribution/release-evidence/robotics-studio-open/0.2.0.json",
+      "sourceVersion": "0.2.0",
+      "releaseVersion": "0.2.0",
+      "status": "blocked",
+      "metadata": {
+        "homebrew": "distribution/homebrew/Casks/robotics-studio-open.rb",
+        "homebrewArchive": "distribution/homebrew/archive/0.1.0/robotics-studio-open.rb",
+        "winget": "distribution/winget/AuraOne.RoboticsStudioOpen/0.2.0",
+        "linux": "distribution/linux/linux-artifact-readiness.json",
+        "windows": "distribution/windows/windows-package-identity-readiness.json",
+        "updater": "distribution/release-evidence/robotics-studio-open/0.2.0.json"
+      },
+      "blockers": [
+        "Record the exact pushed source commit for 0.2.0.",
+        "Build signed DMG, MSI, AppImage, deb, and rpm artifacts from that commit.",
+        "Attach checksums, signatures, notarization, SBOM, provenance, clean-install, update, rollback, package-manager, and live-channel verification."
+      ]
+    }
+  ],
+  "gates": [
+    {
+      "id": "release-evidence-catalog",
+      "command": "node scripts/verify-release-evidence.mjs --require-local-artifacts",
+      "required": true
+    },
+    {
+      "id": "distribution-staging",
+      "command": "node scripts/verify-distribution-staging.mjs",
+      "required": true
+    },
+    {
+      "id": "release-evidence-publishable",
+      "command": "node scripts/verify-release-evidence.mjs --publishable --require-local-artifacts",
+      "required": true
+    },
+    {
+      "id": "linux-metadata",
+      "command": "node scripts/verify-linux-package-matrix.mjs",
+      "required": true
+    },
+    {
+      "id": "linux-artifacts",
+      "command": "node scripts/verify-linux-artifact-readiness.mjs",
+      "required": true
+    },
+    {
+      "id": "winget",
+      "command": "node scripts/verify-winget-matrix.mjs",
+      "required": true
+    },
+    {
+      "id": "windows-identity",
+      "command": "node scripts/verify-windows-package-identity-readiness.mjs",
+      "required": true
+    },
+    {
+      "id": "signing-custody",
+      "command": "node scripts/verify-signing-custody-readiness.mjs",
+      "required": true
+    }
+  ],
+  "publication": {
+    "enabled": false,
+    "requiresPublishableEvidence": true,
+    "destinations": [
+      "github-release",
+      "homebrew",
+      "winget",
+      "linux",
+      "vscode",
+      "updater"
+    ]
+  }
+}

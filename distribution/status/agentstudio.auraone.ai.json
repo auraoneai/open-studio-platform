@@ -1,0 +1,32 @@
+{
+  "service": "agentstudio.auraone.ai",
+  "owner": "AuraOne Open Studio",
+  "status_page": "https://status.auraone.ai/agent-studio-open",
+  "checks": [
+    {
+      "name": "Browser edition root route",
+      "type": "https",
+      "url": "https://agentstudio.auraone.ai/",
+      "method": "GET",
+      "expected_status": 200,
+      "interval_seconds": 60
+    },
+    {
+      "name": "Website docs route",
+      "type": "https",
+      "url": "https://auraone.ai/resources/docs/agent-studio-open",
+      "method": "GET",
+      "expected_status": 200,
+      "interval_seconds": 300
+    },
+    {
+      "name": "Release downloads",
+      "type": "https",
+      "url": "https://github.com/auraoneai/agent-studio-open/releases",
+      "method": "GET",
+      "expected_status": 200,
+      "interval_seconds": 300
+    }
+  ],
+  "incident_contacts": ["opensource@auraone.ai", "security@auraone.ai"]
+}

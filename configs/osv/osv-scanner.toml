@@ -1,0 +1,5 @@
+[[IgnoredVulns]]
+id = ""
+reason = "Do not add ignores without a dated Platform Security approval and linked issue."
+
+[PackageOverrides]

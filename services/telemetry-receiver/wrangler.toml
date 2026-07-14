@@ -1,0 +1,15 @@
+name = "auraone-open-telemetry-receiver"
+main = "src/index.mjs"
+compatibility_date = "2026-05-14"
+workers_dev = false
+
+routes = [
+  { pattern = "o.auraone.ai/*", zone_name = "auraone.ai" }
+]
+
+[[r2_buckets]]
+binding = "TELEMETRY_BUCKET"
+bucket_name = "auraone-open-telemetry-events"
+
+[vars]
+ENVIRONMENT = "production"

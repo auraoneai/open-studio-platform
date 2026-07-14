@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schemas.auraone.ai/open-studio/sentry-projects/v1.json",
+  "org_slug": "auraone-open",
+  "default_opt_in": false,
+  "dsn_source": "runtime-config-or-self-hosted-user-endpoint",
+  "projects": [
+    {
+      "slug": "rubric-studio-open",
+      "display_name": "Rubric Studio Open",
+      "platform_release": "v0.1",
+      "status": "provisioned",
+      "provisioned_at": "2026-05-20",
+      "project_url": "https://auraone-open.sentry.io/projects/rubric-studio-open/",
+      "evidence": "docs/evidence/product/open-studio-sentry-2026-05-20/rubric-studio-open-project.md",
+      "dashboard_evidence": "docs/evidence/product/open-studio-sentry-2026-05-20/dashboard/rubric-studio-open-dashboard.md"
+    },
+    {
+      "slug": "robotics-studio-open",
+      "display_name": "Robotics Studio Open",
+      "platform_release": "v0.2",
+      "status": "provisioned",
+      "provisioned_at": "2026-05-20",
+      "project_url": "https://auraone-open.sentry.io/projects/robotics-studio-open/",
+      "evidence": "docs/evidence/product/open-studio-sentry-2026-05-20/robotics-studio-open-project.md",
+      "dashboard_evidence": "docs/evidence/product/open-studio-sentry-2026-05-20/dashboard/robotics-studio-open-dashboard.md"
+    },
+    {
+      "slug": "agent-studio-open",
+      "display_name": "Agent Studio Open",
+      "platform_release": "v0.3",
+      "status": "provisioned",
+      "provisioned_at": "2026-05-20",
+      "project_url": "https://auraone-open.sentry.io/projects/agent-studio-open/",
+      "evidence": "docs/evidence/product/open-studio-sentry-2026-05-20/agent-studio-open-project.md",
+      "dashboard_evidence": "docs/evidence/product/open-studio-sentry-2026-05-20/dashboard/agent-studio-open-dashboard.md"
+    }
+  ],
+  "scrubbing": {
+    "deny_fields": ["Authorization", "Cookie", "Set-Cookie", "api_key", "secret", "token", "password"],
+    "deny_payload_classes": ["rubric content", "dataset content", "video frames", "sensor readings", "agent traces", "tool arguments", "environment variables", "filesystem paths"]
+  }
+}

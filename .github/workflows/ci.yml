@@ -1,0 +1,76 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  dco:
+    name: DCO sign-off
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check pull request commits
+        if: github.event_name == 'pull_request'
+        run: node compliance/scripts/check-dco.mjs --range="${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}"
+      - name: Check pushed commit
+        if: github.event_name != 'pull_request'
+        run: node compliance/scripts/check-dco.mjs
+
+  packages:
+    name: TypeScript packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.18.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.19.5"
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --dir packages/proofline-oss typecheck
+      - run: pnpm --dir packages/proofline-oss test
+      - run: pnpm --dir packages/proofline-oss build
+      - run: pnpm --dir packages/proofline-oss verify:public-assets
+      - run: pnpm --dir packages/aura-ide-kit typecheck
+      - run: pnpm --dir packages/aura-ide-kit test
+      - run: pnpm --dir packages/aura-ide-kit build
+      - run: pnpm --dir packages/platform-contracts run type-check
+      - run: pnpm --dir packages/platform-contracts build
+      - run: node --test tests/platform-contracts.test.mjs
+      - run: npm test
+        working-directory: registries/npm/rubric-studio
+      - run: npm test
+        working-directory: registries/npm/agent-studio
+      - run: npm test
+        working-directory: registries/npm/robotics-studio
+
+  rust:
+    name: Rust contracts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo test --workspace
+
+  secrets:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITLEAKS_CONFIG: configs/gitleaks/gitleaks.toml
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

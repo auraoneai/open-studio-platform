@@ -1,0 +1,96 @@
+{
+  "name": "agent-studio",
+  "displayName": "Agent Studio Open",
+  "description": "Inspect MCP servers, compose tool calls, run A2A contract checks, and deep link into Agent Studio Open.",
+  "version": "0.1.0",
+  "publisher": "auraone",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.94.0"
+  },
+  "categories": [
+    "Testing",
+    "Other"
+  ],
+  "keywords": [
+    "MCP",
+    "A2A",
+    "agents",
+    "debugging",
+    "replay"
+  ],
+  "homepage": "https://agentstudio.auraone.ai/",
+  "bugs": {
+    "url": "https://github.com/auraoneai/agent-studio-open/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/auraoneai/agent-studio-open.git"
+  },
+  "activationEvents": [
+    "onCommand:agentStudio.open",
+    "onCommand:agentStudio.inspectWorkspace",
+    "onLanguage:json"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "agentStudio.open",
+        "title": "Agent Studio Open: Open Desktop App"
+      },
+      {
+        "command": "agentStudio.inspectWorkspace",
+        "title": "Agent Studio Open: Inspect MCP Workspace"
+      },
+      {
+        "command": "agentStudio.runRiskScan",
+        "title": "Agent Studio Open: Run MCP Risk Scan"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "agentStudio",
+          "title": "Agent Studio",
+          "icon": "resources/agent-studio.svg"
+        }
+      ]
+    },
+    "views": {
+      "agentStudio": [
+        {
+          "id": "agentStudio.manifest",
+          "name": "Manifest Inspector"
+        },
+        {
+          "id": "agentStudio.findings",
+          "name": "Risk Findings"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Agent Studio Open",
+      "properties": {
+        "agentStudio.desktopUri": {
+          "type": "string",
+          "default": "auraone://agent-studio/open",
+          "description": "Deep link URI used to open Agent Studio Open."
+        },
+        "agentStudio.autoDiscoverMcp": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically discover MCP server manifests in the workspace."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "package": "vsce package --no-dependencies",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.2.1",
+    "typescript": "^5.7.2"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.5.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "metadata": {
+    "component": {
+      "type": "application",
+      "name": "auraone-open-studio-platform",
+      "version": "0.1.0"
+    },
+    "properties": [
+      {
+        "name": "auraone:license-policy",
+        "value": "MIT, no GPL-linked shipped binaries, LGPL only when dynamically linked and registered"
+      },
+      {
+        "name": "auraone:privacy-policy",
+        "value": "telemetry and crash reporting are opt-in and default off"
+      }
+    ]
+  }
+}

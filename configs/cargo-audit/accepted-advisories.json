@@ -1,0 +1,149 @@
+{
+  "$schema": "https://auraone.ai/schemas/open-studio/cargo-audit-accepted-advisories-v1.json",
+  "reviewed_on": "2026-05-13",
+  "review_owner": "@auraone/security",
+  "scope": "Tauri 2 Linux GTK/WebKit transitive dependencies in Open Studio desktop shells",
+  "policy": "The platform Cargo workspace must pass cargo-audit with no ignores. Tauri desktop lockfiles may temporarily ignore GTK3/WebKit ecosystem advisories only when every ignored advisory is transitive through Tauri/Wry, documented here, and re-reviewed before the expiry date.",
+  "accepted": [
+    {
+      "id": "RUSTSEC-2024-0370",
+      "crates": ["proc-macro-error"],
+      "dependency_path": "gtk3-macros/glib-macros via gtk/webkit2gtk through tauri-runtime-wry",
+      "reason": "Transitive macro dependency from the Tauri Linux GTK3 stack. No direct AuraOne runtime API consumes proc-macro-error.",
+      "mitigation": "Keep the desktop shell pinned to current Tauri 2 releases, block direct dependencies on proc-macro-error, and re-audit when Tauri/Wry publish a GTK4/WebKitGTK replacement path.",
+      "expires_on": "2026-08-31"
+    },
+    {
+      "id": "RUSTSEC-2024-0411",
+      "crates": ["gdkwayland-sys"],
+      "dependency_path": "tao -> tauri-runtime-wry -> tauri",
+      "reason": "Linux-only GTK3 binding pulled by Tauri/Wry for system webview integration.",
+      "mitigation": "No direct AuraOne calls into GTK bindings; Linux releases remain subject to clean-machine smoke tests and Tauri update review.",
+      "expires_on": "2026-08-31"
+    },
+    {
+      "id": "RUSTSEC-2024-0412",
+      "crates": ["gdk"],
+      "dependency_path": "webkit2gtk/gtk/gdkx11 via wry -> tauri-runtime-wry",
+      "reason": "Linux-only GTK3 binding pulled by Tauri/Wry for system webview integration.",
+      "mitigation": "No direct AuraOne calls into GTK bindings; Linux releases remain subject to clean-machine smoke tests and Tauri update review.",
+      "expires_on": "2026-08-31"
+    },
+    {
+      "id": "RUSTSEC-2024-0413",
+      "crates": ["atk"],
+      "dependency_path": "gtk -> wry -> tauri-runtime-wry",
+      "reason": "Linux-only GTK3 accessibility binding pulled by Tauri/Wry.",
+      "mitigation": "Do not expose custom unsafe GTK/ATK code in AuraOne shell crates; require accessibility smoke checks on Linux release candidates.",
+      "expires_on": "2026-08-31"
+    },
+    {
+      "id": "RUSTSEC-2024-0414",
+      "crates": ["gdkx11-sys"],
+      "dependency_path": "tao/gdkx11 -> wry -> tauri-runtime-wry",
+      "reason": "Linux-only X11 GTK binding pulled by Tauri/Wry.",
+      "mitigation": "Linux release builds are audited as system-webview shells and must not add direct GTK/X11 calls outside Tauri.",
+      "expires_on": "2026-08-31"
+    },
+    {
+      "id": "RUSTSEC-2024-0415",
+      "crates": ["gtk"],
+      "dependency_path": "gtk -> wry/webkit2gtk -> tauri-runtime-wry",
+      "reason": "Linux-only GTK3 binding pulled by Tauri/Wry.",
+      "mitigation": "Track upstream Tauri/Wry migration path; no AuraOne code may depend directly on gtk 0.18 APIs.",
+      "expires_on": "2026-08-31"
+    },
+    {
+      "id": "RUSTSEC-2024-0416",
+      "crates": ["atk-sys"],
+      "dependency_path": "gtk-sys/atk -> gtk/webkit2gtk -> tauri-runtime-wry",
+      "reason": "Linux-only GTK3 accessibility sys binding pulled by Tauri/Wry.",
+      "mitigation": "No direct sys crate usage is allowed; release smoke tests cover Linux accessibility and startup.",
+      "expires_on": "2026-08-31"
+    },
+    {
+      "id": "RUSTSEC-2024-0417",
+      "crates": ["gdkx11"],
+      "dependency_path": "gdkx11 -> wry -> tauri-runtime-wry",
+      "reason": "Linux-only X11 GTK binding pulled by Tauri/Wry.",
+      "mitigation": "No direct AuraOne dependency; re-evaluate after each Tauri minor upgrade.",
+      "expires_on": "2026-08-31"
+    },
+    {
+      "id": "RUSTSEC-2024-0418",
+      "crates": ["gdk-sys"],
+      "dependency_path": "webkit2gtk-sys/gtk-sys -> webkit2gtk -> tauri-runtime-wry",
+      "reason": "Linux-only GTK3 sys binding pulled by Tauri/Wry.",
+      "mitigation": "No direct sys crate usage is allowed; keep Linux sandbox permissions constrained by Tauri capabilities.",
+      "expires_on": "2026-08-31"
+    },
+    {
+      "id": "RUSTSEC-2024-0419",
+      "crates": ["gtk3-macros"],
+      "dependency_path": "gtk3-macros -> gtk -> tauri-runtime-wry",
+      "reason": "Linux-only GTK3 macro crate pulled by Tauri/Wry.",
+      "mitigation": "No direct macro usage in AuraOne code; re-audit when upstream removes GTK3 binding chain.",
+      "expires_on": "2026-08-31"
+    },
+    {
+      "id": "RUSTSEC-2024-0420",
+      "crates": ["gtk-sys"],
+      "dependency_path": "gtk-sys -> gtk/webkit2gtk -> tauri-runtime-wry",
+      "reason": "Linux-only GTK3 sys binding pulled by Tauri/Wry.",
+      "mitigation": "No direct sys crate usage is allowed; Linux release candidates run isolated shell smoke tests.",
+      "expires_on": "2026-08-31"
+    },
+    {
+      "id": "RUSTSEC-2024-0429",
+      "crates": ["glib"],
+      "dependency_path": "glib -> webkit2gtk/gtk -> tauri-runtime-wry",
+      "reason": "Unsound iterator implementation in a transitive Linux GTK/WebKit binding; AuraOne code does not call the affected iterator API directly.",
+      "mitigation": "Block direct glib usage in AuraOne shell code and require Tauri/Wry update review before GA Linux artifacts.",
+      "expires_on": "2026-08-31"
+    },
+    {
+      "id": "RUSTSEC-2025-0075",
+      "crates": ["unic-char-range"],
+      "dependency_path": "unic-ucd-ident/urlpattern -> tauri-utils -> tauri",
+      "reason": "Transitive unmaintained Unicode helper used by Tauri URL pattern parsing.",
+      "mitigation": "No direct dependency; monitor Tauri URL pattern updates and keep tauri-utils pinned to current minor releases.",
+      "expires_on": "2026-08-31"
+    },
+    {
+      "id": "RUSTSEC-2025-0080",
+      "crates": ["unic-common"],
+      "dependency_path": "unic-ucd-version/unic-ucd-ident/urlpattern -> tauri-utils -> tauri",
+      "reason": "Transitive unmaintained Unicode helper used by Tauri URL pattern parsing.",
+      "mitigation": "No direct dependency; monitor Tauri URL pattern updates and keep tauri-utils pinned to current minor releases.",
+      "expires_on": "2026-08-31"
+    },
+    {
+      "id": "RUSTSEC-2025-0081",
+      "crates": ["unic-char-property"],
+      "dependency_path": "unic-ucd-ident/urlpattern -> tauri-utils -> tauri",
+      "reason": "Transitive unmaintained Unicode helper used by Tauri URL pattern parsing.",
+      "mitigation": "No direct dependency; monitor Tauri URL pattern updates and keep tauri-utils pinned to current minor releases.",
+      "expires_on": "2026-08-31"
+    },
+    {
+      "id": "RUSTSEC-2025-0098",
+      "crates": ["unic-ucd-version"],
+      "dependency_path": "unic-ucd-ident/urlpattern -> tauri-utils -> tauri",
+      "reason": "Transitive unmaintained Unicode helper used by Tauri URL pattern parsing.",
+      "mitigation": "No direct dependency; monitor Tauri URL pattern updates and keep tauri-utils pinned to current minor releases.",
+      "expires_on": "2026-08-31"
+    },
+    {
+      "id": "RUSTSEC-2025-0100",
+      "crates": ["unic-ucd-ident"],
+      "dependency_path": "urlpattern -> tauri-utils -> tauri",
+      "reason": "Transitive unmaintained Unicode helper used by Tauri URL pattern parsing.",
+      "mitigation": "No direct dependency; monitor Tauri URL pattern updates and keep tauri-utils pinned to current minor releases.",
+      "expires_on": "2026-08-31"
+    }
+  ],
+  "tauri_lockfiles": [
+    "templates/tauri-app/src-tauri/Cargo.lock",
+    "../rubric-studio-open/src-tauri/Cargo.lock"
+  ]
+}

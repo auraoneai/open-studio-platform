@@ -1,0 +1,55 @@
+name: RFC proposal
+description: Start a platform RFC discussion before opening an RFC PR.
+title: "[RFC]: "
+labels:
+  - rfc
+body:
+  - type: input
+    id: owner
+    attributes:
+      label: Owner
+      placeholder: GitHub handle or team
+    validations:
+      required: true
+  - type: checkboxes
+    id: affected
+    attributes:
+      label: Affected flagships
+      options:
+        - label: Rubric Studio Open
+        - label: Robotics Studio Open
+        - label: Agent Studio Open
+        - label: Platform only
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+    validations:
+      required: true
+  - type: textarea
+    id: security
+    attributes:
+      label: Security and privacy impact
+      description: Address telemetry, crash, signing/update, keychain, intake, CSP, and network destinations.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification plan
+    validations:
+      required: true

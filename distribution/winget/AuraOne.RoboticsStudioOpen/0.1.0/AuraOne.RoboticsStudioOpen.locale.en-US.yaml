@@ -1,0 +1,21 @@
+PackageIdentifier: AuraOne.RoboticsStudioOpen
+PackageVersion: 0.1.0
+PackageLocale: en-US
+Publisher: AuraOne
+PublisherUrl: https://auraone.ai
+PublisherSupportUrl: https://auraone.ai/open/support
+PrivacyUrl: https://auraone.ai/open/privacy
+Author: AuraOne
+PackageName: Robotics Studio Open
+PackageUrl: https://auraone.ai/open/robotics-studio
+License: MIT
+LicenseUrl: https://github.com/auraoneai/robotics-studio-open/blob/main/LICENSE
+ShortDescription: Open-source desktop IDE for reviewing robotics datasets and failure clusters.
+Description: Robotics Studio Open is the AuraOne Open Studio flagship for local dataset review, sensor QA, failure clustering, and Cloud intake handoff.
+Tags:
+  - auraone
+  - robotics
+  - datasets
+  - tauri
+ManifestType: defaultLocale
+ManifestVersion: 1.6.0

@@ -1,0 +1,512 @@
+{
+  "schema": "https://schemas.auraone.ai/open-studio/launch-ops-readiness/v1.json",
+  "status": "local-launch-packets-prepared-external-execution-pending",
+  "checked_date": "2026-05-19",
+  "evidence_dir_env": "AURAONE_OPEN_STUDIO_LAUNCH_EVIDENCE_DIR",
+  "completion_rule": "Do not mark launch operations complete until each action has an independently verifiable URL, screenshot, send report, CRM export, approval memo, schedule, or briefing record attached under the evidence directory.",
+  "products": [
+    {
+      "id": "rubric-studio-open",
+      "name": "Rubric Studio Open",
+      "prd": "docs/prds/rubric-studio-open-prd.md",
+      "local_drafts": [
+        "docs/opensource/rubric-studio-open/launch-assets/launch-posts.md",
+        "docs/opensource/rubric-studio-open/launch-assets/launch-video-storyboard.md",
+        "docs/opensource/rubric-studio-open/demo-scripts/preview-calibration-diff-export.md",
+        "docs/opensource/rubric-studio-open/press-kit/README.md",
+        "opensource/open-studio-platform/support/oss-support-runbook.md"
+      ],
+      "local_assets": [
+        "opensource/rubric-studio-open/docs/demo/rubric-studio-open-launch-smoke.mp4",
+        "opensource/rubric-studio-open/docs/demo/rubric-studio-open-30s.gif",
+        "opensource/rubric-studio-open/docs/demo/screenshots"
+      ],
+      "external_actions": [
+        {
+          "key": "hn-show-hn-timed",
+          "prd_rows": [
+            "11.5"
+          ],
+          "name": "HN Show HN post timed for Tuesday or Wednesday at 09:00 PT",
+          "source_draft": "docs/opensource/rubric-studio-open/launch-assets/launch-posts.md",
+          "required_evidence": [
+            "launch calendar entry",
+            "HN URL or scheduling screenshot",
+            "final Show HN title",
+            "assigned launch-day submitter"
+          ],
+          "result_status": "requires-external-scheduling-evidence",
+          "public_issue": {
+            "repository": "auraoneai/rubric-studio-open",
+            "number": 46,
+            "url": "https://github.com/auraoneai/rubric-studio-open/issues/46"
+          }
+        },
+        {
+          "key": "x-thread-launched",
+          "prd_rows": [
+            "11.5"
+          ],
+          "name": "X thread launched same day at 09:30 PT",
+          "source_draft": "docs/opensource/rubric-studio-open/launch-assets/launch-posts.md",
+          "required_evidence": [
+            "public X thread URL",
+            "scheduled-post screenshot or live-post capture",
+            "timestamp",
+            "account owner"
+          ],
+          "result_status": "requires-external-publication-evidence",
+          "public_issue": {
+            "repository": "auraoneai/rubric-studio-open",
+            "number": 46,
+            "url": "https://github.com/auraoneai/rubric-studio-open/issues/46"
+          }
+        },
+        {
+          "key": "linkedin-post-launched",
+          "prd_rows": [
+            "11.5"
+          ],
+          "name": "LinkedIn post launched at 10:00 PT",
+          "source_draft": "docs/opensource/rubric-studio-open/launch-assets/launch-posts.md",
+          "required_evidence": [
+            "public LinkedIn URL",
+            "scheduled-post screenshot or live-post capture",
+            "timestamp",
+            "account owner"
+          ],
+          "result_status": "requires-external-publication-evidence",
+          "public_issue": {
+            "repository": "auraoneai/rubric-studio-open",
+            "number": 46,
+            "url": "https://github.com/auraoneai/rubric-studio-open/issues/46"
+          }
+        },
+        {
+          "key": "launch-video-youtube",
+          "prd_rows": [
+            "11.4",
+            "11.5"
+          ],
+          "name": "Launch video hosted on YouTube and linked from GitHub README",
+          "source_draft": "docs/opensource/rubric-studio-open/launch-assets/launch-video-storyboard.md",
+          "required_evidence": [
+            "public YouTube URL",
+            "GitHub README link check",
+            "caption availability",
+            "production page or release-note link"
+          ],
+          "result_status": "requires-external-publication-evidence",
+          "public_issue": {
+            "repository": "auraoneai/rubric-studio-open",
+            "number": 46,
+            "url": "https://github.com/auraoneai/rubric-studio-open/issues/46"
+          }
+        },
+        {
+          "key": "press-podcast-outreach-sent",
+          "prd_rows": [
+            "11.5"
+          ],
+          "name": "Press and podcast outreach sent",
+          "source_draft": "docs/opensource/rubric-studio-open/press-kit/README.md",
+          "required_evidence": [
+            "sent-email or CRM records",
+            "target list",
+            "message body hash",
+            "owner"
+          ],
+          "result_status": "requires-external-send-evidence",
+          "public_issue": {
+            "repository": "auraoneai/rubric-studio-open",
+            "number": 46,
+            "url": "https://github.com/auraoneai/rubric-studio-open/issues/46"
+          }
+        },
+        {
+          "key": "partner-prebriefs",
+          "prd_rows": [
+            "11.5"
+          ],
+          "name": "Design partner list pre-briefed",
+          "source_draft": "docs/opensource/rubric-studio-open/press-kit/README.md",
+          "required_evidence": [
+            "partner list",
+            "pre-brief timestamp",
+            "approval or no-quote note",
+            "owner"
+          ],
+          "result_status": "requires-external-partner-evidence",
+          "public_issue": {
+            "repository": "auraoneai/rubric-studio-open",
+            "number": 46,
+            "url": "https://github.com/auraoneai/rubric-studio-open/issues/46"
+          }
+        },
+        {
+          "key": "sales-support-briefing",
+          "prd_rows": [
+            "11.5"
+          ],
+          "name": "Sales and support teams briefed on OSS funnel and issue routing",
+          "source_draft": "opensource/open-studio-platform/support/oss-support-runbook.md",
+          "required_evidence": [
+            "briefing deck or memo",
+            "attendee list",
+            "recording or meeting note",
+            "support routing owner"
+          ],
+          "result_status": "requires-external-briefing-evidence",
+          "public_issue": {
+            "repository": "auraoneai/rubric-studio-open",
+            "number": 46,
+            "url": "https://github.com/auraoneai/rubric-studio-open/issues/46"
+          }
+        }
+      ]
+    },
+    {
+      "id": "robotics-studio-open",
+      "name": "Robotics Studio Open",
+      "prd": "docs/prds/robotics-studio-open-prd.md",
+      "local_drafts": [
+        "docs/open/robotics-studio/launch/hn-post.md",
+        "docs/open/robotics-studio/launch/x-thread.md",
+        "docs/open/robotics-studio/launch/linkedin-post.md",
+        "docs/open/robotics-studio/launch/newsletter.md",
+        "docs/open/robotics-studio/launch/podcast-outreach.md",
+        "docs/open/robotics-studio/launch/press-kit.md",
+        "docs/open/robotics-studio/launch/outbound-target-list.md",
+        "opensource/robotics-studio-open/docs/release/community-channel-readiness-2026-05-13.md",
+        "opensource/robotics-studio-open/docs/release/on-call-rotation-template-2026-05-13.md",
+        "opensource/robotics-studio-open/launch/launch-execution-evidence.json"
+      ],
+      "local_assets": [
+        "docs/open/robotics-studio/launch/demo-video/robotics-studio-open-demo-caption-only.mp4",
+        "docs/open/robotics-studio/launch/demo-video/robotics-studio-open-demo-narrated.mp4",
+        "docs/open/robotics-studio/launch/demo-video/robotics-studio-open-demo-captions.vtt",
+        "docs/open/robotics-studio/launch/demo-video/poster.png"
+      ],
+      "external_actions": [
+        {
+          "key": "hn-post-scheduled",
+          "prd_rows": [
+            "11.5.1"
+          ],
+          "name": "HN post scheduled for Tuesday morning Pacific",
+          "source_draft": "docs/open/robotics-studio/launch/hn-post.md",
+          "required_evidence": [
+            "launch calendar entry",
+            "scheduling screenshot",
+            "final HN title",
+            "comment seed"
+          ],
+          "result_status": "requires-external-scheduling-evidence",
+          "public_issue": {
+            "repository": "auraoneai/robotics-studio-open",
+            "number": 21,
+            "url": "https://github.com/auraoneai/robotics-studio-open/issues/21"
+          }
+        },
+        {
+          "key": "x-thread-queued",
+          "prd_rows": [
+            "11.5.2"
+          ],
+          "name": "X thread queued with co-launch posts",
+          "source_draft": "docs/open/robotics-studio/launch/x-thread.md",
+          "required_evidence": [
+            "AuraOne scheduled-post screenshot",
+            "three founder-account scheduled-post screenshots",
+            "final thread text",
+            "scheduled timestamps"
+          ],
+          "result_status": "requires-external-scheduling-evidence",
+          "public_issue": {
+            "repository": "auraoneai/robotics-studio-open",
+            "number": 22,
+            "url": "https://github.com/auraoneai/robotics-studio-open/issues/22"
+          }
+        },
+        {
+          "key": "demo-video-live",
+          "prd_rows": [
+            "11.5.3"
+          ],
+          "name": "Demo video live on production and YouTube",
+          "source_draft": "docs/open/robotics-studio/launch/demo-video-storyboard.md",
+          "required_evidence": [
+            "public YouTube URL",
+            "production embed check",
+            "launch-post embed check",
+            "captioned asset IDs"
+          ],
+          "result_status": "requires-external-publication-evidence",
+          "public_issue": {
+            "repository": "auraoneai/robotics-studio-open",
+            "number": 23,
+            "url": "https://github.com/auraoneai/robotics-studio-open/issues/23"
+          }
+        },
+        {
+          "key": "newsletter-sent",
+          "prd_rows": [
+            "11.5.4"
+          ],
+          "name": "Newsletter sent",
+          "source_draft": "docs/open/robotics-studio/launch/newsletter.md",
+          "required_evidence": [
+            "email platform send report",
+            "timestamp",
+            "audience",
+            "delivery status"
+          ],
+          "result_status": "requires-external-send-evidence",
+          "public_issue": {
+            "repository": "auraoneai/robotics-studio-open",
+            "number": 24,
+            "url": "https://github.com/auraoneai/robotics-studio-open/issues/24"
+          }
+        },
+        {
+          "key": "partner-quotes-published",
+          "prd_rows": [
+            "11.5.5"
+          ],
+          "name": "Design partner quotes published",
+          "source_draft": "docs/open/robotics-studio/launch/press-kit.md",
+          "required_evidence": [
+            "written quote approval",
+            "approved attribution format",
+            "production page URL",
+            "source approval note"
+          ],
+          "result_status": "requires-external-approval-evidence",
+          "public_issue": {
+            "repository": "auraoneai/robotics-studio-open",
+            "number": 25,
+            "url": "https://github.com/auraoneai/robotics-studio-open/issues/25"
+          }
+        },
+        {
+          "key": "podcast-outreach-sent",
+          "prd_rows": [
+            "11.5.6"
+          ],
+          "name": "Podcast outreach emails sent",
+          "source_draft": "docs/open/robotics-studio/launch/podcast-outreach.md",
+          "required_evidence": [
+            "sent-email record for TWIML AI",
+            "sent-email record for Robot Brains",
+            "sent-email record for Latent Space",
+            "CRM activity entries"
+          ],
+          "result_status": "requires-external-send-evidence",
+          "public_issue": {
+            "repository": "auraoneai/robotics-studio-open",
+            "number": 26,
+            "url": "https://github.com/auraoneai/robotics-studio-open/issues/26"
+          }
+        },
+        {
+          "key": "design-partners-running",
+          "prd_rows": [
+            "11.5.7"
+          ],
+          "name": "Three named-account design partners running daily",
+          "source_draft": "docs/open/robotics-studio/launch/outbound-target-list.md",
+          "required_evidence": [
+            "frontier lab daily usage report",
+            "humanoid OEM daily usage report",
+            "academic group daily usage report",
+            "date range"
+          ],
+          "result_status": "requires-external-partner-usage-evidence",
+          "public_issue": {
+            "repository": "auraoneai/robotics-studio-open",
+            "number": 27,
+            "url": "https://github.com/auraoneai/robotics-studio-open/issues/27"
+          }
+        },
+        {
+          "key": "community-channel-live",
+          "prd_rows": [
+            "11.5.9"
+          ],
+          "name": "Discord or community channel created",
+          "source_draft": "opensource/robotics-studio-open/docs/release/community-channel-readiness-2026-05-13.md",
+          "required_evidence": [
+            "live invite URL",
+            "moderation owner",
+            "channel screenshot or export",
+            "launch-owner approval"
+          ],
+          "result_status": "requires-external-community-evidence",
+          "public_issue": {
+            "repository": "auraoneai/robotics-studio-open",
+            "number": 28,
+            "url": "https://github.com/auraoneai/robotics-studio-open/issues/28"
+          }
+        },
+        {
+          "key": "on-call-roster",
+          "prd_rows": [
+            "11.5.12"
+          ],
+          "name": "On-call rotation for first two weeks",
+          "source_draft": "opensource/robotics-studio-open/docs/release/on-call-rotation-template-2026-05-13.md",
+          "required_evidence": [
+            "filled schedule",
+            "named primary and backup humans",
+            "launch dates",
+            "escalation route"
+          ],
+          "result_status": "requires-external-on-call-evidence",
+          "public_issue": {
+            "repository": "auraoneai/robotics-studio-open",
+            "number": 31,
+            "url": "https://github.com/auraoneai/robotics-studio-open/issues/31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "agent-studio-open",
+      "name": "Agent Studio Open",
+      "prd": "docs/prds/agent-studio-open-prd.md",
+      "local_drafts": [
+        "docs/agent-studio-open/launch/announcement.md",
+        "docs/agent-studio-open/launch/cross-posts.md",
+        "docs/agent-studio-open/launch/demo-scripts.md",
+        "docs/agent-studio-open/launch/press-kit.md",
+        "docs/agent-studio-open/programs/coding-agent-grading-pilot.md"
+      ],
+      "local_assets": [
+        "auraone-website/public/images/blog/agent-studio-open-launch-hero.webp",
+        "auraone-website/public/images/blog/agent-studio-open-launch-thumb.webp"
+      ],
+      "external_actions": [
+        {
+          "key": "launch-date-set",
+          "prd_rows": [
+            "11.5"
+          ],
+          "name": "Launch date set for Tuesday or Wednesday AM Pacific",
+          "source_draft": "docs/agent-studio-open/launch/announcement.md",
+          "required_evidence": [
+            "launch calendar entry",
+            "owner",
+            "timezone",
+            "go/no-go decision note"
+          ],
+          "result_status": "requires-external-scheduling-evidence",
+          "public_issue": {
+            "repository": "auraoneai/agent-studio-open",
+            "number": 6,
+            "url": "https://github.com/auraoneai/agent-studio-open/issues/6"
+          }
+        },
+        {
+          "key": "hn-timing-coordinated",
+          "prd_rows": [
+            "11.5"
+          ],
+          "name": "HN submission draft prepared and timing coordinated",
+          "source_draft": "docs/agent-studio-open/launch/cross-posts.md",
+          "required_evidence": [
+            "final Show HN title",
+            "assigned submitter",
+            "scheduled window",
+            "comment coverage owner"
+          ],
+          "result_status": "requires-external-scheduling-evidence",
+          "public_issue": {
+            "repository": "auraoneai/agent-studio-open",
+            "number": 6,
+            "url": "https://github.com/auraoneai/agent-studio-open/issues/6"
+          }
+        },
+        {
+          "key": "founder-social-coordinated",
+          "prd_rows": [
+            "11.5"
+          ],
+          "name": "Founder X account posts coordinated",
+          "source_draft": "docs/agent-studio-open/launch/cross-posts.md",
+          "required_evidence": [
+            "scheduled-post screenshots",
+            "founder account list",
+            "timestamps",
+            "final copy"
+          ],
+          "result_status": "requires-external-scheduling-evidence",
+          "public_issue": {
+            "repository": "auraoneai/agent-studio-open",
+            "number": 6,
+            "url": "https://github.com/auraoneai/agent-studio-open/issues/6"
+          }
+        },
+        {
+          "key": "dogfood-program-complete",
+          "prd_rows": [
+            "11.5"
+          ],
+          "name": "Anthropic and OpenAI dogfood program completed two weeks before launch",
+          "source_draft": "docs/agent-studio-open/programs/coding-agent-grading-pilot.md",
+          "required_evidence": [
+            "dogfood roster",
+            "two-week feedback log",
+            "participant approval",
+            "bug triage summary"
+          ],
+          "result_status": "requires-external-dogfood-evidence",
+          "public_issue": {
+            "repository": "auraoneai/agent-studio-open",
+            "number": 6,
+            "url": "https://github.com/auraoneai/agent-studio-open/issues/6"
+          }
+        },
+        {
+          "key": "devrel-heads-up-sent",
+          "prd_rows": [
+            "11.5"
+          ],
+          "name": "Anthropic DevRel heads-up sent one week before launch",
+          "source_draft": "docs/agent-studio-open/launch/press-kit.md",
+          "required_evidence": [
+            "sent-email or CRM record",
+            "recipient",
+            "timestamp",
+            "message body hash"
+          ],
+          "result_status": "requires-external-send-evidence",
+          "public_issue": {
+            "repository": "auraoneai/agent-studio-open",
+            "number": 6,
+            "url": "https://github.com/auraoneai/agent-studio-open/issues/6"
+          }
+        },
+        {
+          "key": "podcast-outreach-sent",
+          "prd_rows": [
+            "11.5"
+          ],
+          "name": "Podcast outreach sent",
+          "source_draft": "docs/agent-studio-open/launch/press-kit.md",
+          "required_evidence": [
+            "sent-email record for Latent Space",
+            "sent-email record for Practical AI",
+            "sent-email record for AI Engineer",
+            "CRM activity entries"
+          ],
+          "result_status": "requires-external-send-evidence",
+          "public_issue": {
+            "repository": "auraoneai/agent-studio-open",
+            "number": 6,
+            "url": "https://github.com/auraoneai/agent-studio-open/issues/6"
+          }
+        }
+      ]
+    }
+  ]
+}

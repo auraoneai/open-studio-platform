@@ -1,0 +1,67 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "AuraOne Open Studio",
+  "version": "0.1.0",
+  "identifier": "ai.auraone.open-studio.template",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:5173",
+    "beforeDevCommand": "pnpm dev",
+    "beforeBuildCommand": "pnpm build"
+  },
+  "app": {
+    "withGlobalTauri": false,
+    "windows": [
+      {
+        "title": "AuraOne Open Studio",
+        "width": 1440,
+        "height": 900,
+        "minWidth": 1024,
+        "minHeight": 640,
+        "decorations": true,
+        "transparent": false
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' data: blob:; connect-src 'self' https://updates.auraone.ai https://updates2.auraone.ai https://intake.auraone.ai https://o.auraone.ai https://sentry.io; frame-src 'none'; object-src 'none'; base-uri 'self'",
+      "capabilities": ["default"]
+    },
+    "trayIcon": null
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["app", "dmg", "msi", "deb", "rpm", "appimage"],
+    "icon": ["icons/icon.png"],
+    "category": "DeveloperTool",
+    "publisher": "AuraOne",
+    "shortDescription": "AuraOne Open Studio desktop shell",
+    "longDescription": "Canonical AuraOne Open Studio desktop shell template with secure IPC, project-as-folder workflows, AuraGlass IDE kit, updater, and deep-link registration.",
+    "macOS": {
+      "minimumSystemVersion": "12.0",
+      "signingIdentity": "Developer ID Application: AuraOne, Inc. (XXXXXXXXXX)",
+      "providerShortName": "AuraOne",
+      "entitlements": "configs/macos/entitlements.plist"
+    },
+    "windows": {
+      "certificateThumbprint": null,
+      "digestAlgorithm": "sha256",
+      "timestampUrl": "http://timestamp.digicert.com"
+    },
+    "externalBin": []
+  },
+  "plugins": {
+    "updater": {
+      "active": true,
+      "endpoints": [
+        "https://updates.auraone.ai/<flagship>/{{target}}/{{arch}}/{{current_version}}",
+        "https://updates2.auraone.ai/<flagship>/{{target}}/{{arch}}/{{current_version}}"
+      ],
+      "pubkey": "DAKD/Nqj4KoXZpXv9li/zVQv+2LhThXE5J9tx0Wl1B8="
+    },
+    "deep-link": {
+      "desktop": {
+        "schemes": ["auraone"]
+      }
+    }
+  }
+}

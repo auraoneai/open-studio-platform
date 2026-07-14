@@ -1,0 +1,20 @@
+rules:
+  - id: auraone-telemetry-forbidden-field
+    message: Telemetry payloads must not include content-bearing or identifying fields.
+    severity: ERROR
+    languages: [typescript, javascript]
+    pattern-regex: "(?m)(^\\s*|[{,]\\s*)['\\\"]?(content|prompt|sample|rubric|criterion|trace|path|hostname|email|api_key|token|secret)['\\\"]?\\s*:"
+    paths:
+      include:
+        - "**/*telemetry*.ts"
+        - "**/*Telemetry*.tsx"
+  - id: auraone-tauri-shell-execute
+    message: Tauri shell execution must not be enabled by default.
+    severity: ERROR
+    languages: [json]
+    pattern-regex: "shell:(open|execute)"
+  - id: auraone-csp-unsafe-eval
+    message: Tauri CSP must not include unsafe-eval.
+    severity: ERROR
+    languages: [json]
+    pattern-regex: "unsafe-eval"

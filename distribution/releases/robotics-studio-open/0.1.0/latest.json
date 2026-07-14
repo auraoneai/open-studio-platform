@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "flagship": "robotics-studio-open",
+  "version": "0.1.0",
+  "notes": "Robotics Studio Open 0.1.0 macOS Apple Silicon release. Developer ID signed, notarized, stapled, and Gatekeeper validated.",
+  "pub_date": "2026-05-19T16:15:23.617Z",
+  "platforms": {
+    "darwin-aarch64": {
+      "signature": "GqhjrC8wfLCc6MKViAwfoiB0k8g6YpN196nEfmGXCcQoptGRmurFCy3NoxWQ/IG9dBYYqYkuZivpZFnGXe2QAw==",
+      "url": "https://github.com/auraoneai/robotics-studio-open/releases/download/v0.1.0/Robotics.Studio.Open_0.1.0_aarch64.dmg"
+    }
+  },
+  "checksums": {
+    "Robotics.Studio.Open_0.1.0_aarch64.dmg": "acdc4c53457ea85a8c306728f82cc07a0eb5b5b0423bf719f42f012e19a113d3"
+  },
+  "rollout": {
+    "percentage": 100,
+    "mandatory": false,
+    "min_version": "0.0.0",
+    "kill_switch": false
+  },
+  "channel": "stable",
+  "manifest_signature_algorithm": "ed25519",
+  "manifest_signature": "22JDwvNLCB+g2pmV9yThtpwudiOHalGNkudiE2iSW1+eZNOSEQ5CFYLM1EonvXMQXsGiKjBjAWUDlvYmfV2xBw=="
+}

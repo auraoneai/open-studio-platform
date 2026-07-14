@@ -1,0 +1,54 @@
+{
+  "name": "@auraone/rubric-studio",
+  "version": "0.2.1",
+  "description": "JavaScript validation and release metadata companion for Rubric Studio Open.",
+  "license": "MIT",
+  "type": "module",
+  "types": "./src/index.d.ts",
+  "bin": {
+    "rubric-studio": "src/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "ai",
+    "ai-evaluation",
+    "calibration",
+    "criterion",
+    "evaluation",
+    "evals",
+    "local-first",
+    "rubric",
+    "rubric-validation",
+    "rubric-studio"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/auraoneai/rubric-studio-open.git"
+  },
+  "homepage": "https://auraone.ai/open/rubric-studio-open",
+  "bugs": {
+    "url": "https://github.com/auraoneai/rubric-studio-open/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "node --test",
+    "pack:check": "npm pack --dry-run"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

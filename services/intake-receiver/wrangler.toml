@@ -1,0 +1,22 @@
+name = "auraone-open-intake-receiver"
+main = "src/index.mjs"
+compatibility_date = "2026-05-13"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = false
+
+routes = [
+  { pattern = "intake.auraone.ai/*", zone_name = "auraone.ai" }
+]
+
+[[r2_buckets]]
+binding = "INTAKE_BUCKET"
+bucket_name = "auraone-open-intake-packets"
+
+[[queues.producers]]
+binding = "CLOUD_IMPORT_QUEUE"
+queue = "auraone-open-cloud-import"
+
+[vars]
+ENVIRONMENT = "production"
+AURAONE_CLOUD_BASE_URL = "https://auraone.ai/cloud"
+INTAKE_MAX_BYTES = "104857600"

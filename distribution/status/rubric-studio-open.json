@@ -1,0 +1,50 @@
+{
+  "service": "rubric-studio-open",
+  "owner": "AuraOne Open Studio",
+  "status_page": "https://auraone.ai/status/rubric-studio-open",
+  "provisioning_status": "provisioned",
+  "provider": "Sentry Uptime",
+  "provider_project": "rubric-studio-open",
+  "provisioned_at": "2026-05-20T03:22:00Z",
+  "evidence": "docs/evidence/product/open-studio-sentry-2026-05-20/rubric-studio-open-endpoint-uptime-monitors.md",
+  "checks": [
+    {
+      "name": "Rubric public status page",
+      "type": "https",
+      "url": "https://auraone.ai/status/rubric-studio-open",
+      "method": "GET",
+      "expected_status": 200,
+      "interval_seconds": 60,
+      "monitor_url": "https://auraone-open.sentry.io/monitors/7342459/?project=4511419761295360"
+    },
+    {
+      "name": "Rubric stable update manifest",
+      "type": "https",
+      "url": "https://updates.auraone.ai/rubric-studio-open/darwin/aarch64/0.0.0?channel=stable",
+      "method": "GET",
+      "expected_status": 200,
+      "response_contains": "manifest_signature",
+      "interval_seconds": 60,
+      "monitor_url": "https://auraone-open.sentry.io/monitors/7342470/?project=4511419761295360"
+    },
+    {
+      "name": "Rubric docs custom domain",
+      "type": "https",
+      "url": "https://docs.rubricstudio.auraone.ai/",
+      "method": "GET",
+      "expected_status": 200,
+      "interval_seconds": 60,
+      "monitor_url": "https://auraone-open.sentry.io/monitors/7342479/?project=4511419761295360"
+    },
+    {
+      "name": "Rubric intake endpoint health",
+      "type": "https",
+      "url": "https://intake.auraone.ai/healthz",
+      "method": "GET",
+      "expected_status": 200,
+      "interval_seconds": 60,
+      "monitor_url": "https://auraone-open.sentry.io/monitors/7342490/?project=4511419761295360"
+    }
+  ],
+  "incident_contacts": ["opensource@auraone.ai", "security@auraone.ai"]
+}

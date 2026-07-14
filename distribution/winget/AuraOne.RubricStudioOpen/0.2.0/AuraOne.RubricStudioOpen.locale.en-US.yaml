@@ -1,0 +1,25 @@
+PackageIdentifier: AuraOne.RubricStudioOpen
+PackageVersion: 0.2.0
+PackageLocale: en-US
+Publisher: AuraOne
+PublisherUrl: https://auraone.ai
+PublisherSupportUrl: https://github.com/auraoneai/rubric-studio-open/issues
+PrivacyUrl: https://auraone.ai/open/rubric-studio-open/privacy
+Author: AuraOne
+PackageName: Rubric Studio Open
+PackageUrl: https://auraone.ai/open/rubric-studio-open
+License: MIT
+LicenseUrl: https://github.com/auraoneai/rubric-studio-open/blob/main/LICENSE
+Copyright: Copyright (c) 2026 AuraOne
+ShortDescription: Local-first IDE for AI evaluation rubrics.
+Description: Rubric Studio Open is a local-first desktop IDE for authoring, testing, calibrating, diffing, and exporting AI evaluation rubrics.
+Moniker: rubric-studio-open
+Tags:
+  - ai
+  - evaluation
+  - evals
+  - ide
+  - llm
+  - rubric
+ManifestType: defaultLocale
+ManifestVersion: 1.9.0

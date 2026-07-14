@@ -1,0 +1,13 @@
+Package: agent-studio-open
+Version: 0.2.0
+Section: devel
+Priority: optional
+Architecture: amd64
+Maintainer: AuraOne Open Studio <opensource@auraone.ai>
+Homepage: https://agentstudio.auraone.ai/
+Vcs-Browser: https://github.com/auraoneai/agent-studio-open
+Depends: libwebkit2gtk-4.1-0 | libwebkit2gtk-4.0-37, libayatana-appindicator3-1, librsvg2-2, ca-certificates
+Description: Local-first IDE for debugging MCP and A2A agents
+ Agent Studio Open records, replays, compares, and regression-tests
+ MCP and A2A agent sessions locally. It stores traces on disk,
+ keeps user secrets in the OS keychain, and uses opt-in telemetry only.

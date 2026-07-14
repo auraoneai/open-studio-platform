@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allowedLicenses": [
+    "0BSD",
+    "Apache-2.0",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "CC-BY-4.0",
+    "CC0-1.0",
+    "ISC",
+    "MIT",
+    "MIT-0",
+    "MPL-2.0",
+    "Python-2.0",
+    "BlueOak-1.0.0",
+    "Unicode-3.0",
+    "Zlib"
+  ],
+  "packageLicenseOverrides": {
+    "require-like": "MIT"
+  },
+  "conditionallyAllowedLicenses": {
+    "LGPL-2.1": "Allowed only for dynamically linked system libraries documented in compliance/licensing/lgpl-dynamic-linking-register.md.",
+    "LGPL-2.1-only": "Allowed only for dynamically linked system libraries documented in compliance/licensing/lgpl-dynamic-linking-register.md.",
+    "LGPL-2.1-or-later": "Allowed only for dynamically linked system libraries documented in compliance/licensing/lgpl-dynamic-linking-register.md.",
+    "LGPL-3.0": "Allowed only for dynamically linked system libraries documented in compliance/licensing/lgpl-dynamic-linking-register.md.",
+    "LGPL-3.0-only": "Allowed only for dynamically linked system libraries documented in compliance/licensing/lgpl-dynamic-linking-register.md.",
+    "LGPL-3.0-or-later": "Allowed only for dynamically linked system libraries documented in compliance/licensing/lgpl-dynamic-linking-register.md."
+  },
+  "deniedLicensePatterns": [
+    "GPL",
+    "AGPL",
+    "SSPL",
+    "BUSL",
+    "Commons Clause",
+    "PolyForm",
+    "Elastic License"
+  ],
+  "licenseRegister": "opensource/open-studio-platform/compliance/licensing/lgpl-dynamic-linking-register.md",
+  "noticeFile": "opensource/open-studio-platform/compliance/licensing/NOTICE.template.md"
+}

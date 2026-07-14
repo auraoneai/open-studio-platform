@@ -1,0 +1,33 @@
+{
+  "product": "agent-studio-open",
+  "surface": "browser-edition",
+  "owner": "platform-release",
+  "status": "production-live",
+  "date": "2026-05-14",
+  "provider": "vercel-static",
+  "vercel_project": "veerone/agent-studio-open",
+  "public_route_project": "veerone/auraone-website",
+  "vercel_deployment_id": "dpl_GpNkyTyEnqxfsvPG9t2jp5MTgvo1",
+  "vercel_production_url": "https://agentstudio.auraone.ai/",
+  "vercel_verified_at": "2026-05-14T20:48:29Z",
+  "website_deployment_id": "dpl_DDNZhGvC5JGWtSwGseou4LSFrEd8",
+  "website_production_url": "https://agentstudio.auraone.ai/",
+  "website_verified_at": "2026-05-13T17:00:57Z",
+  "public_host": "agentstudio.auraone.ai",
+  "public_path": "/",
+  "project_root": "opensource/agent-studio-open",
+  "build_command": "pnpm --filter=@auraone/agent-studio-open run build:web",
+  "output_directory": "opensource/agent-studio-open/dist",
+  "asset_base": "/",
+  "required_routes": [
+    "https://agentstudio.auraone.ai/",
+    "https://agentstudio.auraone.ai/assets/*"
+  ],
+  "verified_routes": [
+    "https://agentstudio.auraone.ai/"
+  ],
+  "legacy_redirect_routes": [
+    "https://agentstudio.auraone.ai/web"
+  ],
+  "legacy_redirect_status": "pending Vercel deployment of public commit 5202e15"
+}

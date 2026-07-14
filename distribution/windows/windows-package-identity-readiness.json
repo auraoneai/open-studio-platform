@@ -1,0 +1,204 @@
+{
+  "$schema": "https://schemas.auraone.ai/open-studio/windows-package-identity-readiness/v1.json",
+  "status": "evidence-packet-prepared-external-registration-pending",
+  "evidence_kind": "staged",
+  "target_version": "0.2.0",
+  "archival_manifest_roots": [
+    "distribution/winget/AuraOne.RubricStudioOpen/0.1.0",
+    "distribution/winget/AuraOne.RoboticsStudioOpen/0.1.0",
+    "distribution/winget/AuraOne.AgentStudioOpen/0.1.0"
+  ],
+  "evidence_dir_env": "AURAONE_WINDOWS_IDENTITY_EVIDENCE_DIR",
+  "allowed_evidence_extensions": [".md", ".json", ".txt", ".png", ".pdf"],
+  "completion_rule": "Do not mark Windows package identity, Windows signing, winget submission, or Windows install QA complete until independent Microsoft Partner Center identity evidence, EV-signed public MSI evidence, real ProductCode/SHA256 values, winget submission evidence, and clean Windows install evidence are attached.",
+  "publisher": {
+    "display_name": "AuraOne",
+    "winget_publisher": "AuraOne",
+    "partner_center_account_state": "requires-external-evidence",
+    "ev_certificate_state": "requires-external-evidence"
+  },
+  "products": [
+    {
+      "id": "rubric-studio-open",
+      "name": "Rubric Studio Open",
+      "package_identifier": "AuraOne.RubricStudioOpen",
+      "version": "0.2.0",
+      "prd": "docs/prds/rubric-studio-open-prd.md",
+      "winget_manifest": "distribution/winget/AuraOne.RubricStudioOpen/0.2.0/AuraOne.RubricStudioOpen.installer.yaml",
+      "expected_msi_assets": [
+        "Rubric-Studio-Open_0.2.0_x64_en-US.msi",
+        "Rubric-Studio-Open_0.2.0_arm64_en-US.msi"
+      ],
+      "identity_evidence": [
+        {
+          "key": "partner-center-identity",
+          "name": "Microsoft Partner Center package identity registration",
+          "required_evidence": [
+            "Partner Center app/package identity screenshot or JSON export",
+            "Reserved identity showing AuraOne.RubricStudioOpen",
+            "Publisher/account name visible as AuraOne or approved migration owner"
+          ]
+        },
+        {
+          "key": "publisher-verification",
+          "name": "Microsoft publisher/account verification",
+          "required_evidence": [
+            "Verified publisher/account state",
+            "Account owner or admin confirmation",
+            "Migration note if identity is temporarily under the founder account"
+          ]
+        }
+      ],
+      "release_evidence": [
+        {
+          "key": "signed-msi",
+          "name": "EV-signed public MSI artifacts",
+          "required_evidence": [
+            "x64 and arm64 MSI release URLs",
+            "EV Authenticode verification output",
+            "GitHub Release asset digests"
+          ]
+        },
+        {
+          "key": "winget-manifest",
+          "name": "winget manifest submission readiness",
+          "required_evidence": [
+            "Real InstallerSha256 values",
+            "Real WiX ProductCode values",
+            "wingetvalidate or wingetcreate validation output"
+          ]
+        },
+        {
+          "key": "clean-windows-install",
+          "name": "Clean Windows install QA",
+          "required_evidence": [
+            "Fresh Windows VM or runner details",
+            "Install and launch smoke output",
+            "Uninstall or upgrade smoke output"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "robotics-studio-open",
+      "name": "Robotics Studio Open",
+      "package_identifier": "AuraOne.RoboticsStudioOpen",
+      "version": "0.2.0",
+      "prd": "docs/prds/robotics-studio-open-prd.md",
+      "winget_manifest": "distribution/winget/AuraOne.RoboticsStudioOpen/0.2.0/AuraOne.RoboticsStudioOpen.installer.yaml",
+      "expected_msi_assets": [
+        "Robotics-Studio-Open_0.2.0_x64_en-US.msi",
+        "Robotics-Studio-Open_0.2.0_arm64_en-US.msi"
+      ],
+      "identity_evidence": [
+        {
+          "key": "partner-center-identity",
+          "name": "Microsoft Partner Center package identity registration",
+          "required_evidence": [
+            "Partner Center app/package identity screenshot or JSON export",
+            "Reserved identity showing AuraOne.RoboticsStudioOpen",
+            "Publisher/account name visible as AuraOne or approved migration owner"
+          ]
+        },
+        {
+          "key": "publisher-verification",
+          "name": "Microsoft publisher/account verification",
+          "required_evidence": [
+            "Verified publisher/account state",
+            "Account owner or admin confirmation",
+            "Migration note if identity is temporarily under the founder account"
+          ]
+        }
+      ],
+      "release_evidence": [
+        {
+          "key": "signed-msi",
+          "name": "EV-signed public MSI artifacts",
+          "required_evidence": [
+            "x64 and arm64 MSI release URLs",
+            "EV Authenticode verification output",
+            "GitHub Release asset digests"
+          ]
+        },
+        {
+          "key": "winget-manifest",
+          "name": "winget manifest submission readiness",
+          "required_evidence": [
+            "Real InstallerSha256 values",
+            "Real WiX ProductCode values",
+            "wingetvalidate or wingetcreate validation output"
+          ]
+        },
+        {
+          "key": "clean-windows-install",
+          "name": "Clean Windows install QA",
+          "required_evidence": [
+            "Fresh Windows VM or runner details",
+            "Install and launch smoke output",
+            "Uninstall or upgrade smoke output"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "agent-studio-open",
+      "name": "Agent Studio Open",
+      "package_identifier": "AuraOne.AgentStudioOpen",
+      "version": "0.2.0",
+      "prd": "docs/prds/agent-studio-open-prd.md",
+      "winget_manifest": "distribution/winget/AuraOne.AgentStudioOpen/0.2.0/AuraOne.AgentStudioOpen.installer.yaml",
+      "expected_msi_assets": [
+        "Agent.Studio.Open_0.2.0_x64_en-US.msi"
+      ],
+      "identity_evidence": [
+        {
+          "key": "partner-center-identity",
+          "name": "Microsoft Partner Center package identity registration",
+          "required_evidence": [
+            "Partner Center app/package identity screenshot or JSON export",
+            "Reserved identity showing AuraOne.AgentStudioOpen",
+            "Publisher/account name visible as AuraOne or approved migration owner"
+          ]
+        },
+        {
+          "key": "publisher-verification",
+          "name": "Microsoft publisher/account verification",
+          "required_evidence": [
+            "Verified publisher/account state",
+            "Account owner or admin confirmation",
+            "Migration note if identity is temporarily under the founder account"
+          ]
+        }
+      ],
+      "release_evidence": [
+        {
+          "key": "signed-msi",
+          "name": "EV-signed public MSI artifacts",
+          "required_evidence": [
+            "x64 MSI release URL",
+            "EV Authenticode verification output",
+            "GitHub Release asset digest"
+          ]
+        },
+        {
+          "key": "winget-manifest",
+          "name": "winget manifest submission readiness",
+          "required_evidence": [
+            "Real InstallerSha256 value",
+            "Real WiX ProductCode value",
+            "wingetvalidate or wingetcreate validation output"
+          ]
+        },
+        {
+          "key": "clean-windows-install",
+          "name": "Clean Windows install QA",
+          "required_evidence": [
+            "Fresh Windows VM or runner details",
+            "Install and launch smoke output",
+            "Uninstall or upgrade smoke output"
+          ]
+        }
+      ]
+    }
+  ]
+}

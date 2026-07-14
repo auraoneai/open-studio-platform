@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "flagship": "rubric-studio-open",
+  "version": "0.1.0",
+  "notes": "Rubric Studio Open 0.1.0 macOS Apple Silicon release. Developer ID signed, notarized, stapled, and Gatekeeper validated.",
+  "pub_date": "2026-05-19T16:15:23.590Z",
+  "platforms": {
+    "darwin-aarch64": {
+      "signature": "+4ygo90Dix3BWgTDyaN9zz+5G2Dpxp7v32MDcDmZFsBWc4EpodeWJlHereGvxAn7C1AETsPttSKIEmxb752cDA==",
+      "url": "https://github.com/auraoneai/rubric-studio-open/releases/download/v0.1.0/Rubric.Studio.Open_0.1.0_aarch64.dmg"
+    }
+  },
+  "checksums": {
+    "Rubric.Studio.Open_0.1.0_aarch64.dmg": "e9851568e64a8315e6b72411fb1fa8d6d4d0131fa15882478d29f83cc548c3c3"
+  },
+  "rollout": {
+    "percentage": 100,
+    "mandatory": false,
+    "min_version": "0.0.0",
+    "kill_switch": false
+  },
+  "channel": "stable",
+  "manifest_signature_algorithm": "ed25519",
+  "manifest_signature": "8SJ0xQS1l+axRgdGANfRvQPhrQV/T4unGqRB+b+mBJ4sgIGkgRzvifKpZg7E0wg5jvntAH5sDkHI5gmf3plWBg=="
+}

@@ -1,0 +1,33 @@
+repository:
+  name: robotics-studio-open
+  description: "Robotics Studio Open: local-first IDE for reviewed teleop and VLA datasets."
+  homepage: "https://auraone.ai/open/robotics-studio"
+  private: false
+  has_issues: true
+  has_projects: false
+  has_wiki: false
+  has_downloads: true
+  default_branch: main
+  allow_squash_merge: true
+  allow_merge_commit: false
+  allow_rebase_merge: true
+  delete_branch_on_merge: true
+
+branches:
+  - name: main
+    protection:
+      required_status_checks:
+        strict: true
+        contexts:
+          - "DCO / dco"
+          - "CI / linux-x64"
+          - "CI / macos-arm64"
+          - "CI / windows-x64"
+          - "Security, SBOM, and License / release-security"
+          - "Accessibility and Performance / qa"
+      required_pull_request_reviews:
+        required_approving_review_count: 2
+        dismiss_stale_reviews: true
+        require_code_owner_reviews: true
+      enforce_admins: true
+      restrictions: null

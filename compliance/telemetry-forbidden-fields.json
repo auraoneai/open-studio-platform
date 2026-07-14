@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Forbidden telemetry fields for AuraOne Open Studio Platform events.",
+  "forbiddenFieldNames": [
+    "api_key",
+    "authorization",
+    "content",
+    "email",
+    "file_path",
+    "message",
+    "password",
+    "path",
+    "prompt",
+    "raw",
+    "secret",
+    "token",
+    "trace",
+    "user_text"
+  ],
+  "forbiddenSourcePatterns": [
+    "\\bapi[_-]?key\\b",
+    "\\bauthorization\\b",
+    "\\bcontent\\b",
+    "\\bemail\\b",
+    "\\bfile[_-]?path\\b",
+    "\\bpassword\\b",
+    "\\bpath\\b",
+    "\\bprompt\\b",
+    "\\bsecret\\b",
+    "\\btoken\\b",
+    "\\btrace\\b",
+    "\\buser[_-]?text\\b"
+  ],
+  "allowedPatterns": [
+    "event_name",
+    "install_id",
+    "session_id",
+    "flagship",
+    "platform",
+    "version",
+    "timestamp",
+    "count",
+    "duration_ms",
+    "status",
+    "source"
+  ],
+  "reviewRule": "Any new telemetry key outside allowedPatterns requires Platform Security review and must not be derived from user content, filenames, paths, secrets, prompts, traces, or identity data."
+}

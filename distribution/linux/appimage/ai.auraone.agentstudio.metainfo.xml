@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>ai.auraone.agentstudio</id>
+  <name>Agent Studio Open</name>
+  <summary>Local-first IDE for debugging MCP and A2A agents</summary>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <developer_name>AuraOne</developer_name>
+  <launchable type="desktop-id">agent-studio-open.desktop</launchable>
+  <url type="homepage">https://agentstudio.auraone.ai/</url>
+  <url type="bugtracker">https://github.com/auraoneai/agent-studio-open/issues</url>
+  <url type="help">https://agentstudio.auraone.ai/docs</url>
+  <description>
+    <p>Agent Studio Open records, replays, compares, and regression-tests MCP and A2A agent sessions locally.</p>
+    <p>Trace data stays on the user's machine by default. Telemetry and crash reporting are opt-in only.</p>
+  </description>
+  <categories>
+    <category>Development</category>
+    <category>IDE</category>
+  </categories>
+  <releases>
+    <release version="0.2.0" date="2026-07-12" type="development">
+      <description>
+        <p>Staged Proofline UI/UX package metadata. No Linux artifact is published or verified.</p>
+      </description>
+    </release>
+    <release version="0.1.0" date="2026-05-15">
+      <description>
+        <p>Initial historical release metadata for Agent Studio Open distribution.</p>
+      </description>
+    </release>
+  </releases>
+</component>

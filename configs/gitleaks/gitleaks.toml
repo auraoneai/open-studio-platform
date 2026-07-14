@@ -1,0 +1,48 @@
+title = "AuraOne Open Studio Platform secret scanning policy"
+
+[allowlist]
+description = "Repository-safe examples and placeholder contact material."
+paths = [
+  '''opensource/open-studio-platform/security/contacts/pgp-placeholder\.asc$''',
+  '''opensource/open-studio-platform/compliance/tests/fixtures/.*$''',
+  '''(^|/)node_modules/.*$''',
+  '''(^|/)target/.*$''',
+  '''(^|/)src-tauri/target/.*$''',
+  '''(^|/)dist/.*$''',
+  '''(^|/)build/.*$''',
+  '''docs/prds/.*$''',
+]
+regexes = [
+  '''REPLACE_WITH_[A-Z0-9_]+''',
+  '''security@example\.com''',
+]
+
+[[rules]]
+id = "auraone-api-key"
+description = "AuraOne-style API key"
+regex = '''(?i)aura(?:one)?_[a-z0-9]{24,}'''
+keywords = ["aura_", "auraone_"]
+
+[[rules]]
+id = "generic-private-key"
+description = "PEM private key block"
+regex = '''-----BEGIN (RSA |DSA |EC |OPENSSH |PGP )?PRIVATE KEY-----'''
+keywords = ["BEGIN", "PRIVATE KEY"]
+
+[[rules]]
+id = "cloudflare-token"
+description = "Cloudflare API token"
+regex = '''(?i)(cloudflare|cf)[_-]?(api|token|secret).{0,20}['"][A-Za-z0-9_-]{30,}['"]'''
+keywords = ["cloudflare", "cf"]
+
+[[rules]]
+id = "sentry-dsn"
+description = "Sentry DSN"
+regex = '''https://[a-f0-9]{32}@o[0-9]+\.ingest\.sentry\.io/[0-9]+'''
+keywords = ["sentry.io", "ingest"]
+
+[[rules]]
+id = "github-token"
+description = "GitHub token"
+regex = '''gh[pousr]_[A-Za-z0-9_]{36,255}'''
+keywords = ["ghp_", "gho_", "ghu_", "ghs_", "ghr_"]

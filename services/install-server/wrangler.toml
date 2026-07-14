@@ -1,0 +1,17 @@
+name = "auraone-open-install-server"
+main = "src/index.mjs"
+compatibility_date = "2026-05-13"
+workers_dev = false
+
+routes = [
+  { pattern = "install.auraone.ai/*", zone_name = "auraone.ai" }
+]
+
+[[kv_namespaces]]
+binding = "INSTALL_SIGNATURES"
+id = "520ccbf18a554b02b3108981aee6e0b1"
+
+[vars]
+ENVIRONMENT = "production"
+AURAONE_RELEASE_GPG_FINGERPRINT = "F909806D13D9CD4CF403FA3C8C61E177EB6329E7"
+AURAONE_WINDOWS_PUBLISHER_THUMBPRINT = "BLOCKED-2026-05-13-AURAONE-WINDOWS-EV-CERT-THUMBPRINT"

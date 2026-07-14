@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "flagship": "agent-studio-open",
+  "version": "0.1.0",
+  "notes": "Agent Studio Open 0.1.0 macOS Apple Silicon release. Developer ID signed, notarized, stapled, and Gatekeeper validated.",
+  "pub_date": "2026-05-19T16:15:23.646Z",
+  "platforms": {
+    "darwin-aarch64": {
+      "signature": "Fzf+sgMtm/zbllZfSvgk1cSzmk5FnHXmkdIueJPp1r+HrsgF6Wg4yPWzwQLtixSBlx91XkLZZP3t3g3DjjxEDA==",
+      "url": "https://github.com/auraoneai/agent-studio-open/releases/download/v0.1.0/Agent.Studio.Open_0.1.0_aarch64.dmg"
+    }
+  },
+  "checksums": {
+    "Agent.Studio.Open_0.1.0_aarch64.dmg": "1dce9e2abab65a5ef08114f0eeb64c76c4ac1784d5ddc8cfb67f53f8302bb8b7"
+  },
+  "rollout": {
+    "percentage": 100,
+    "mandatory": false,
+    "min_version": "0.0.0",
+    "kill_switch": false
+  },
+  "channel": "stable",
+  "manifest_signature_algorithm": "ed25519",
+  "manifest_signature": "eucPAjUXG6u05AbZtMUB5i4aJeVQevKNEQVT5T0JECPvIhv3KuL2mv589TZSM3LdsUZpEdqdQLEsw/BAim3uCQ=="
+}

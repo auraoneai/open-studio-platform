@@ -1,0 +1,13 @@
+Package: rubric-studio-open
+Version: 0.2.0
+Section: devel
+Priority: optional
+Architecture: amd64
+Maintainer: AuraOne Open Studio <opensource@auraone.ai>
+Homepage: https://rubric-studio.auraone.ai/
+Vcs-Browser: https://github.com/auraoneai/rubric-studio-open
+Depends: libwebkit2gtk-4.1-0 | libwebkit2gtk-4.0-37, libayatana-appindicator3-1, librsvg2-2, ca-certificates
+Description: Local-first IDE for authoring and testing evaluation rubrics
+ Rubric Studio Open authors, tests, calibrates, diffs, and exports
+ criterion-level AI evaluation rubrics locally. It keeps rubric files
+ git-native, uses BYO provider keys, and uses opt-in telemetry only.

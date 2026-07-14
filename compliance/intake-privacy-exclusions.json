@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Required privacy exclusions for .auraonepkg intake packets.",
+  "requiredRules": [
+    "no_os_identity_autofill",
+    "no_git_identity_autofill",
+    "no_secret_payloads",
+    "explicit_user_contact_only",
+    "local_preview_before_upload"
+  ],
+  "requiredExclusions": [
+    "user_pii_other_than_explicit_intake",
+    "os_account_identity",
+    "git_identity",
+    "api_keys_or_tokens",
+    "raw_secret_values"
+  ],
+  "explicitUserInputFields": ["display_name", "email"],
+  "disallowedAutofillPatterns": [
+    "git config",
+    "user.email",
+    "whoami",
+    "\\$USER",
+    "\\$USERNAME",
+    "os\\.user",
+    "process\\.env"
+  ],
+  "disallowedSourcePatterns": [
+    "git\\s+config\\s+user\\.email",
+    "process\\.env\\.(USER|USERNAME|EMAIL|HOME)",
+    "dirs::home_dir\\(",
+    "whoami::",
+    "std::env::var\\(\"(USER|USERNAME|EMAIL|HOME)\"\\)"
+  ],
+  "reviewRule": "Intake contact fields may be stored only after deliberate user input in the intake dialog. The platform must not infer name, email, organization, usernames, home directories, repository remotes, or account identifiers."
+}

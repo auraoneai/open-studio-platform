@@ -1,0 +1,94 @@
+{
+  "product": "agent-studio-open",
+  "version": "0.1.0",
+  "generated_at": "2026-05-19T23:09:00Z",
+  "repository": "https://github.com/auraoneai/agent-studio-open",
+  "release_url": "https://github.com/auraoneai/agent-studio-open/releases/tag/v0.1.0",
+  "workflow_run": "https://github.com/auraoneai/agent-studio-open/actions/runs/25894017962",
+  "artifacts": [
+    {
+      "platform": "macos",
+      "architecture": "aarch64",
+      "format": "dmg",
+      "release_url": "https://github.com/auraoneai/agent-studio-open/releases/download/v0.1.0/Agent.Studio.Open_0.1.0_aarch64.dmg",
+      "sha256": "1dce9e2abab65a5ef08114f0eeb64c76c4ac1784d5ddc8cfb67f53f8302bb8b7",
+      "codesign": "Developer ID Application: Gurbaksh Chahal (6T44QQW78K)",
+      "notarized": true,
+      "verification": [
+        "Local macOS Tauri bundle build passed",
+        "xcrun notarytool submission accepted",
+        "xcrun stapler validate passed",
+        "spctl accepted the DMG with source=Notarized Developer ID",
+        "SHA-256 checksum generated for the stapled DMG"
+      ]
+    },
+    {
+      "platform": "windows",
+      "architecture": "x64",
+      "format": "msi",
+      "release_url": "https://github.com/auraoneai/agent-studio-open/releases/download/v0.1.0/Agent.Studio.Open_0.1.0_x64_en-US.msi",
+      "sha256": "ad595c1b59003d6971b29fda7f620eb7d50c7fe33c3437b625e4a684052ef183",
+      "product_code": "{53ACB6EA-342C-4333-B63E-5FF4FB4EE588}",
+      "codesign": "unsigned",
+      "verification": [
+        "GitHub Actions windows-2022 Tauri MSI build passed",
+        "Packaged startup probe passed",
+        "SHA-256 checksum generated and published"
+      ]
+    },
+    {
+      "platform": "linux",
+      "architecture": "x64",
+      "format": "AppImage",
+      "release_url": "https://github.com/auraoneai/agent-studio-open/releases/download/v0.1.0/Agent.Studio.Open_0.1.0_amd64.AppImage",
+      "sha256": "5d91faed857b610f2b5c5eb2f66b53f4ca32f322a3e7a229faaf747f3ce1bba4",
+      "verification": [
+        "GitHub Actions ubuntu-24.04 Tauri AppImage build passed",
+        "Real bubblewrap sandbox smoke passed",
+        "Packaged startup probe passed"
+      ]
+    },
+    {
+      "platform": "linux",
+      "architecture": "x64",
+      "format": "deb",
+      "release_url": "https://github.com/auraoneai/agent-studio-open/releases/download/v0.1.0/Agent.Studio.Open_0.1.0_amd64.deb",
+      "sha256": "e02d6aec51b46e51874e2ea6e3783534334f9fb0afa6359d37432a4984bca00d",
+      "verification": [
+        "GitHub Actions ubuntu-24.04 Tauri deb build passed",
+        "SHA-256 checksum generated and published"
+      ]
+    },
+    {
+      "platform": "linux",
+      "architecture": "x64",
+      "format": "rpm",
+      "release_url": "https://github.com/auraoneai/agent-studio-open/releases/download/v0.1.0/Agent.Studio.Open-0.1.0-1.x86_64.rpm",
+      "sha256": "cb354752bea403db14f1bcd30cc172efcde6b0f68d3c5644f68f3d4287c13ef1",
+      "verification": [
+        "GitHub Actions ubuntu-24.04 Tauri rpm build passed",
+        "SHA-256 checksum generated and published"
+      ]
+    }
+  ],
+  "blocked_artifacts": [
+    {
+      "platform": "macos",
+      "architecture": "x64",
+      "format": "dmg",
+      "reason": "No Intel macOS artifact was built from this arm64 host."
+    },
+    {
+      "platform": "windows",
+      "architecture": "arm64",
+      "format": "msi",
+      "reason": "No Windows arm64 artifact is produced by the current public release matrix."
+    },
+    {
+      "platform": "linux",
+      "architecture": "arm64",
+      "format": "AppImage/deb/rpm",
+      "reason": "No Linux arm64 artifact is produced by the current public release matrix."
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+[database]
+path = "~/.cargo/advisory-db"
+url = "https://github.com/RustSec/advisory-db"
+fetch = true
+stale = false
+
+[output]
+format = "terminal"
+deny = ["warnings", "unmaintained", "unsound", "yanked"]
+
+[target]
+arch = ["x86_64", "aarch64"]
+os = ["macos", "windows", "linux"]
+
+[advisories]
+ignore = []

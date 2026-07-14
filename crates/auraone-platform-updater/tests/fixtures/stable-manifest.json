@@ -1,0 +1,18 @@
+{
+  "version": "0.4.2",
+  "notes": "Security fixes.",
+  "pub_date": "2026-06-14T18:00:00Z",
+  "platforms": {
+    "darwin-aarch64": {
+      "signature": "artifact-ed25519-signature",
+      "url": "https://updates.auraone.ai/rubric-studio-open/stable/0.4.2/RubricStudioOpen_0.4.2_aarch64.app.tar.gz"
+    }
+  },
+  "rollout": {
+    "percentage": 100,
+    "mandatory": false,
+    "min_version": "0.3.0"
+  },
+  "channel": "stable",
+  "manifest_signature": null
+}

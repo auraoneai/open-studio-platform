@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>ai.auraone.rubricstudio.open</id>
+  <name>Rubric Studio Open</name>
+  <summary>Local-first IDE for authoring and testing evaluation rubrics</summary>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <developer_name>AuraOne</developer_name>
+  <launchable type="desktop-id">rubric-studio-open.desktop</launchable>
+  <url type="homepage">https://rubric-studio.auraone.ai/</url>
+  <url type="bugtracker">https://github.com/auraoneai/rubric-studio-open/issues</url>
+  <url type="help">https://docs.rubricstudio.auraone.ai/</url>
+  <description>
+    <p>Rubric Studio Open authors, tests, calibrates, diffs, and exports criterion-level AI evaluation rubrics locally.</p>
+    <p>Rubrics stay on disk by default. Provider keys are BYO, and telemetry and crash reporting are opt-in only.</p>
+  </description>
+  <categories>
+    <category>Development</category>
+    <category>IDE</category>
+  </categories>
+  <releases>
+    <release version="0.2.0" date="2026-07-12" type="development">
+      <description>
+        <p>Staged Proofline UI/UX package metadata. No Linux artifact is published or verified.</p>
+      </description>
+    </release>
+    <release version="0.1.0" date="2026-05-19">
+      <description>
+        <p>Initial historical Linux package metadata for Rubric Studio Open distribution.</p>
+      </description>
+    </release>
+  </releases>
+</component>

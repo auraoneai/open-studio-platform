@@ -1,0 +1,35 @@
+project: robotics-studio-open
+date: "2026-05-13"
+license: MIT
+deny:
+  - GPL-1.0
+  - GPL-2.0
+  - GPL-3.0
+  - AGPL-1.0
+  - AGPL-3.0
+  - LGPL-2.0
+  - LGPL-2.1
+  - LGPL-3.0
+  - SSPL-1.0
+  - Commons-Clause
+  - UNLICENSED
+review_required:
+  - MPL-2.0
+  - EPL-1.0
+  - EPL-2.0
+  - CDDL-1.0
+  - custom
+allow:
+  - MIT
+  - Apache-2.0
+  - BSD-2-Clause
+  - BSD-3-Clause
+  - ISC
+  - CC-BY-4.0
+  - Unicode-DFS-2016
+shipped_binary_scope:
+  - tauri-app
+  - rust-crates
+  - python-sidecars
+  - robostudio-engine
+  - bundled-sample-dataset-metadata

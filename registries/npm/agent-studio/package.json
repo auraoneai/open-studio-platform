@@ -1,0 +1,54 @@
+{
+  "name": "@auraone/agent-studio",
+  "version": "0.2.2",
+  "description": "MCP manifest validation and release metadata companion for Agent Studio Open.",
+  "license": "MIT",
+  "type": "module",
+  "types": "./src/index.d.ts",
+  "bin": {
+    "agent-studio": "src/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "a2a",
+    "agent-debugging",
+    "agent-evaluation",
+    "agent-observability",
+    "agent-replay",
+    "ai-agents",
+    "local-first",
+    "mcp",
+    "mcp-validation",
+    "model-context-protocol"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/auraoneai/agent-studio-open.git"
+  },
+  "homepage": "https://auraone.ai/open/agent-studio-open",
+  "bugs": {
+    "url": "https://github.com/auraoneai/agent-studio-open/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "node --test",
+    "pack:check": "npm pack --dry-run"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

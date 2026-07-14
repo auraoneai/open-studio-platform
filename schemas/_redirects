@@ -1,0 +1,2 @@
+/open-studio/intake-packet/v1.json /intake-packet.schema.json 200
+/open-studio/telemetry/v1.json /telemetry.schema.json 200

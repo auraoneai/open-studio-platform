@@ -1,0 +1,5 @@
+packages:
+  - "packages/*"
+  - "templates/tauri-app"
+  - "docs-template"
+  - "services/*"

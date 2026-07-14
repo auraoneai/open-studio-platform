@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Robotics Studio Open
+Comment=Review robotics datasets, cluster failures, and export audited subsets locally
+Exec=robostudio %U
+Icon=ai.auraone.roboticsstudio
+Terminal=false
+Categories=Development;Science;DataVisualization;
+MimeType=application/vnd.auraone.robotics-review;application/vnd.auraone.auraonepkg;
+StartupWMClass=Robotics Studio Open
+Keywords=robotics;dataset;lerobot;rlds;rosbag;teleop;vla;

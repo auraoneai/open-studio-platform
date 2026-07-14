@@ -1,0 +1,148 @@
+name: Open Studio Platform Security
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+  security-events: write
+
+jobs:
+  dco:
+    name: DCO sign-off
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check pull request commits
+        if: github.event_name == 'pull_request'
+        run: |
+          node opensource/open-studio-platform/compliance/scripts/check-dco.mjs --range="${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}"
+      - name: Check HEAD commit
+        if: github.event_name != 'pull_request'
+        run: node opensource/open-studio-platform/compliance/scripts/check-dco.mjs
+
+  security-configs:
+    name: Security artifact integrity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.19.5"
+      - run: node opensource/open-studio-platform/compliance/scripts/check-security-configs.mjs
+
+  signing-wrapper-policy:
+    name: Signing wrapper policy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.19.5"
+      - run: node opensource/open-studio-platform/scripts/check-signing-wrapper-usage.mjs .
+
+  rust-supply-chain:
+    name: Rust audit and license policy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Install cargo security tools
+        run: |
+          cargo install cargo-deny --locked
+          cargo install cargo-audit --locked
+      - name: Run cargo-deny when platform crates exist
+        run: |
+          if find opensource/open-studio-platform -name Cargo.toml -print -quit | grep -q .; then
+            cargo deny --config opensource/open-studio-platform/configs/cargo-deny/deny.toml check
+          else
+            echo "No platform Cargo.toml files found yet; cargo-deny config validated by security-configs."
+          fi
+      - name: Run cargo-audit with expiring Tauri GTK/WebKit advisory register
+        run: node opensource/open-studio-platform/scripts/run-cargo-audit.mjs
+
+  node-supply-chain:
+    name: npm audit and license policy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.19.5"
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.18.0
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Dependency vulnerability scan
+        run: pnpm audit --prod --audit-level high
+      - name: npm license check
+        run: node opensource/open-studio-platform/compliance/scripts/check-npm-licenses.mjs
+
+  secret-scan:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITLEAKS_CONFIG: opensource/open-studio-platform/configs/gitleaks/gitleaks.toml
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  privacy-contracts:
+    name: Telemetry and intake privacy contracts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.19.5"
+      - name: Forbidden telemetry fields
+        run: node opensource/open-studio-platform/compliance/scripts/check-telemetry-forbidden-fields.mjs --self-test
+      - name: Intake privacy exclusions
+        run: node opensource/open-studio-platform/compliance/scripts/check-intake-privacy-exclusions.mjs --self-test
+
+  osv-scan:
+    name: OSV dependency vulnerability scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: google/osv-scanner-action@v1
+        with:
+          scan-args: |-
+            --config=opensource/open-studio-platform/configs/osv/osv-scanner.toml
+            --recursive
+            opensource/open-studio-platform
+
+  semgrep:
+    name: Semgrep security rules
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: semgrep/semgrep-action@v1
+        with:
+          config: opensource/open-studio-platform/configs/semgrep/security.yml
+
+  sbom:
+    name: SBOM generation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: anchore/sbom-action@v0
+        with:
+          path: opensource/open-studio-platform
+          format: cyclonedx-json
+          output-file: open-studio-platform.cdx.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: open-studio-platform-sbom
+          path: open-studio-platform.cdx.json

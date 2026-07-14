@@ -1,0 +1,482 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.auraone.ai/open-studio/release-evidence/v1.json",
+  "title": "AuraOne Open Studio release evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "evidenceKind",
+    "product",
+    "release",
+    "artifacts",
+    "channels",
+    "updater",
+    "rollback",
+    "blockers"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://schemas.auraone.ai/open-studio/release-evidence/v1.json"
+    },
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "evidenceKind": {
+      "enum": [
+        "archival",
+        "staged",
+        "release"
+      ]
+    },
+    "product": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "repository",
+        "bundleIdentifier",
+        "version",
+        "sourceCommit",
+        "license"
+      ],
+      "properties": {
+        "id": {
+          "enum": [
+            "rubric-studio-open",
+            "agent-studio-open",
+            "robotics-studio-open"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "repository": {
+          "type": "string",
+          "pattern": "^https://github\\.com/auraoneai/[a-z0-9-]+$"
+        },
+        "bundleIdentifier": {
+          "type": "string",
+          "pattern": "^ai\\.auraone\\."
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z.-]+)?$"
+        },
+        "sourceCommit": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "license": {
+          "const": "MIT"
+        }
+      }
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "channel",
+        "status",
+        "releasedAt",
+        "verifiedAt",
+        "releaseUrl",
+        "plannedReleaseUrl",
+        "notes"
+      ],
+      "properties": {
+        "channel": {
+          "enum": [
+            "stable",
+            "beta",
+            "nightly"
+          ]
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "releasedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "verifiedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "releaseUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "plannedReleaseUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "platform",
+          "architecture",
+          "type",
+          "name",
+          "status",
+          "url",
+          "plannedUrl",
+          "sha256",
+          "sizeBytes",
+          "minimumOS",
+          "localPath",
+          "signing",
+          "evidence",
+          "blockers"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "platform": {
+            "enum": [
+              "macos",
+              "windows",
+              "linux"
+            ]
+          },
+          "architecture": {
+            "enum": [
+              "aarch64",
+              "arm64",
+              "x64",
+              "amd64",
+              "x86_64"
+            ]
+          },
+          "type": {
+            "enum": [
+              "dmg",
+              "msi",
+              "appimage",
+              "deb",
+              "rpm"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "$ref": "#/$defs/status"
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uri"
+          },
+          "plannedUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uri"
+          },
+          "sha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "sizeBytes": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "minimumOS": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "localPath": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "signing": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "status",
+              "identity",
+              "notarized",
+              "stapled",
+              "gatekeeper",
+              "authenticode",
+              "gpgSignatureUrl"
+            ],
+            "properties": {
+              "status": {
+                "$ref": "#/$defs/status"
+              },
+              "identity": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "notarized": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "stapled": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "gatekeeper": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "authenticode": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "gpgSignatureUrl": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "uri"
+              }
+            }
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "blockers": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "channels": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "status",
+          "url",
+          "plannedUrl",
+          "version",
+          "evidence",
+          "blockers"
+        ],
+        "properties": {
+          "id": {
+            "enum": [
+              "github-release",
+              "homebrew",
+              "winget",
+              "linux",
+              "vscode",
+              "updater"
+            ]
+          },
+          "status": {
+            "$ref": "#/$defs/status"
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uri"
+          },
+          "plannedUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uri"
+          },
+          "version": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "blockers": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "updater": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "manifestUrl",
+        "plannedManifestUrl",
+        "checkedInManifest",
+        "signatureAlgorithm",
+        "blockers"
+      ],
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "manifestUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "plannedManifestUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "checkedInManifest": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "signatureAlgorithm": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "rollback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owner",
+        "instructions",
+        "lastVerifiedVersion"
+      ],
+      "properties": {
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "instructions": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lastVerifiedVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "securityPolicy": {
+      "type": "string",
+      "format": "uri"
+    },
+    "support": {
+      "type": "string",
+      "minLength": 1
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "$defs": {
+    "status": {
+      "enum": [
+        "draft",
+        "ready",
+        "review",
+        "verified",
+        "released",
+        "warning",
+        "failed",
+        "blocked",
+        "unavailable",
+        "stale",
+        "partial",
+        "not-applicable"
+      ]
+    }
+  }
+}

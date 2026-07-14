@@ -1,0 +1,8 @@
+{
+  "example-mit@1.0.0": {
+    "licenses": "MIT"
+  },
+  "example-apache@1.0.0": {
+    "licenses": "Apache-2.0"
+  }
+}

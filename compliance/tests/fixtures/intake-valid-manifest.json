@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "packet_id": "pkt_fixture_valid",
+  "contact": {
+    "display_name": "Explicit User Entry",
+    "email": "user-entered@example.com"
+  },
+  "privacy": {
+    "user_pii_other_than_explicit_intake": true,
+    "os_account_identity": true,
+    "git_identity": true,
+    "api_keys_or_tokens": true,
+    "raw_secret_values": true
+  },
+  "payloads": []
+}

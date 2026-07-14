@@ -1,0 +1,238 @@
+name: Open Studio Signed Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to publish"
+        required: true
+        type: string
+      channel:
+        description: "Update channel"
+        required: true
+        default: stable
+        type: choice
+        options:
+          - stable
+          - beta
+          - nightly
+
+permissions:
+  contents: write
+  id-token: write
+
+env:
+  AURAONE_RELEASE_CHANNEL: ${{ inputs.channel || 'stable' }}
+  AURAONE_ARTIFACT_DIR: dist/release
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    name: Build ${{ matrix.target }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-14
+            target: macos-universal
+            platform: macos
+            arch: universal
+            rustTarget: ""
+          - os: windows-2022
+            target: windows-x64
+            platform: windows
+            arch: x64
+            rustTarget: x86_64-pc-windows-msvc
+          - os: windows-2022
+            target: windows-arm64
+            platform: windows
+            arch: arm64
+            rustTarget: aarch64-pc-windows-msvc
+          - os: ubuntu-22.04
+            target: linux-x64
+            platform: linux
+            arch: x64
+            rustTarget: ""
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8.15.8
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.19.5
+          cache: pnpm
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Install Rust target
+        if: matrix.rustTarget != ''
+        run: rustup target add "${{ matrix.rustTarget }}"
+
+      - name: Install frontend dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Tauri bundle
+        shell: bash
+        run: |
+          if [ -n "${{ matrix.rustTarget }}" ]; then
+            pnpm tauri build --target "${{ matrix.rustTarget }}"
+          else
+            pnpm tauri build
+          fi
+
+      - name: Sign macOS artifacts
+        if: matrix.platform == 'macos'
+        env:
+          AURAONE_MACOS_SIGNING_IDENTITY: ${{ secrets.AURAONE_MACOS_SIGNING_IDENTITY }}
+        run: |
+          find src-tauri/target -type d -name "*.app" -maxdepth 6 -print0 | xargs -0 opensource/open-studio-platform/scripts/sign-macos.sh --deep
+          find src-tauri/target -type f \( -name "*.dmg" -o -name "*.pkg" \) -maxdepth 8 -print0 | xargs -0 opensource/open-studio-platform/scripts/sign-macos.sh
+
+      - name: Notarize macOS artifacts
+        if: matrix.platform == 'macos'
+        env:
+          AURAONE_NOTARY_KEYCHAIN_PROFILE: ${{ secrets.AURAONE_NOTARY_KEYCHAIN_PROFILE }}
+          AURAONE_APPLE_ID: ${{ secrets.AURAONE_APPLE_ID }}
+          AURAONE_APPLE_TEAM_ID: ${{ secrets.AURAONE_APPLE_TEAM_ID }}
+          AURAONE_APPLE_APP_PASSWORD: ${{ secrets.AURAONE_APPLE_APP_PASSWORD }}
+        run: |
+          find src-tauri/target -type f \( -name "*.dmg" -o -name "*.pkg" \) -maxdepth 8 -print0 | xargs -0 -n1 opensource/open-studio-platform/scripts/notarize.sh
+
+      - name: Sign Windows artifacts
+        if: matrix.platform == 'windows'
+        shell: pwsh
+        env:
+          AURAONE_WINDOWS_CERT_THUMBPRINT: ${{ secrets.AURAONE_WINDOWS_CERT_THUMBPRINT }}
+          AURAONE_WINDOWS_PFX_PATH: ${{ secrets.AURAONE_WINDOWS_PFX_PATH }}
+          AURAONE_WINDOWS_PFX_PASSWORD: ${{ secrets.AURAONE_WINDOWS_PFX_PASSWORD }}
+          AURAONE_WINDOWS_SIGNING_PROVIDER: ${{ secrets.AURAONE_WINDOWS_SIGNING_PROVIDER }}
+          AURAONE_ARTIFACT_SIGNING_DLIB_PATH: ${{ secrets.AURAONE_ARTIFACT_SIGNING_DLIB_PATH }}
+          AURAONE_ARTIFACT_SIGNING_METADATA_PATH: ${{ secrets.AURAONE_ARTIFACT_SIGNING_METADATA_PATH }}
+          AURAONE_ARTIFACT_SIGNING_ENDPOINT: ${{ secrets.AURAONE_ARTIFACT_SIGNING_ENDPOINT }}
+          AURAONE_ARTIFACT_SIGNING_ACCOUNT_NAME: ${{ secrets.AURAONE_ARTIFACT_SIGNING_ACCOUNT_NAME }}
+          AURAONE_ARTIFACT_SIGNING_CERTIFICATE_PROFILE_NAME: ${{ secrets.AURAONE_ARTIFACT_SIGNING_CERTIFICATE_PROFILE_NAME }}
+        run: |
+          Get-ChildItem -Path src-tauri/target -Recurse -Include *.msi,*.exe,*.msix | ForEach-Object {
+            opensource/open-studio-platform/scripts/sign-windows.ps1 $_.FullName
+          }
+
+      - name: Prepare Windows MSI metadata
+        if: matrix.platform == 'windows'
+        shell: bash
+        run: |
+          node opensource/open-studio-platform/scripts/prepare-windows-msi-release.mjs \
+            --flagship "${{ vars.AURAONE_FLAGSHIP_ID }}" \
+            --version "${GITHUB_REF_NAME#v}" \
+            --arch "${{ matrix.arch }}" \
+            --source-dir src-tauri/target \
+            --out-dir "$AURAONE_ARTIFACT_DIR" \
+            --base-url "https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}" \
+            --metadata-out "$AURAONE_ARTIFACT_DIR/windows-msi-${{ matrix.arch }}.json" \
+            --require-signed
+
+      - name: Sign Linux artifacts
+        if: matrix.platform == 'linux'
+        env:
+          AURAONE_GPG_KEY_ID: ${{ secrets.AURAONE_GPG_KEY_ID }}
+        run: |
+          find src-tauri/target -type f \( -name "*.AppImage" -o -name "*.deb" -o -name "*.rpm" \) -maxdepth 8 -print0 | xargs -0 opensource/open-studio-platform/scripts/sign-linux.sh
+
+      - name: Collect release artifacts
+        shell: bash
+        run: |
+          mkdir -p "$AURAONE_ARTIFACT_DIR"
+          find src-tauri/target -type f \( -name "*.dmg" -o -name "*.pkg" -o -name "*.msi" -o -name "*.exe" -o -name "*.AppImage" -o -name "*.deb" -o -name "*.rpm" -o -name "*.asc" -o -name "*.sig" \) -maxdepth 8 -exec cp {} "$AURAONE_ARTIFACT_DIR/" \;
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release-${{ matrix.target }}
+          path: ${{ env.AURAONE_ARTIFACT_DIR }}
+
+  publish:
+    name: Publish GitHub Release and R2 update artifacts
+    needs: build
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: release-*
+          merge-multiple: true
+          path: dist/release
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.19.5
+
+      - name: Verify versioned docs for release
+        run: |
+          node opensource/open-studio-platform/scripts/sync-docs-version.mjs \
+            --root opensource/open-studio-platform/docs-template \
+            --version "${GITHUB_REF_NAME#v}" \
+            --check
+
+      - name: Import GPG signing key
+        env:
+          AURAONE_RELEASE_GPG_PRIVATE_KEY: ${{ secrets.AURAONE_RELEASE_GPG_PRIVATE_KEY }}
+        run: |
+          test -n "$AURAONE_RELEASE_GPG_PRIVATE_KEY"
+          printf '%s' "$AURAONE_RELEASE_GPG_PRIVATE_KEY" | gpg --batch --import
+
+      - name: Generate signed checksums
+        env:
+          AURAONE_GPG_KEY_ID: ${{ secrets.AURAONE_GPG_KEY_ID }}
+        run: opensource/open-studio-platform/scripts/generate-checksums.sh dist/release
+
+      - name: Generate updater manifest
+        env:
+          AURAONE_UPDATE_SIGNING_KEY_PEM: ${{ secrets.AURAONE_UPDATE_SIGNING_KEY_PEM }}
+        run: |
+          node opensource/open-studio-platform/scripts/make-updater-manifest.mjs \
+            --flagship "${{ vars.AURAONE_FLAGSHIP_ID }}" \
+            --version "${GITHUB_REF_NAME#v}" \
+            --channel "$AURAONE_RELEASE_CHANNEL" \
+            --out dist/release/latest.json \
+            $(find dist/release -maxdepth 1 -type f \( -name "*.dmg" -o -name "*.msi" -o -name "*.AppImage" \) -printf ' --artifact %f:%p:https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/%f')
+
+      - name: Prepare winget manifest patch from signed MSI metadata
+        run: |
+          if compgen -G "dist/release/windows-msi-*.json" > /dev/null; then
+            node opensource/open-studio-platform/scripts/prepare-winget-manifests.mjs \
+              $(find dist/release -maxdepth 1 -name "windows-msi-*.json" -printf ' --metadata %p') \
+              --base-url "https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}" \
+              --require-signed \
+              > dist/release/winget-manifest-update-plan.json
+          fi
+
+      - name: Publish GitHub Release and mirror to R2
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          AURAONE_R2_BUCKET: auraone-open-updates
+          AURAONE_R2_PREFIX: manifests/${{ vars.AURAONE_FLAGSHIP_ID }}/${{ env.AURAONE_RELEASE_CHANNEL }}
+        run: |
+          npm install -g wrangler
+          opensource/open-studio-platform/scripts/publish-release.sh \
+            --repo "${{ github.repository }}" \
+            --tag "${{ github.ref_name }}" \
+            --artifacts-dir dist/release \
+            --r2-bucket "$AURAONE_R2_BUCKET" \
+            --r2-prefix "$AURAONE_R2_PREFIX"
+
+      - name: Request Homebrew and winget manifest updates
+        env:
+          GH_TOKEN: ${{ secrets.AURAONE_RELEASE_BOT_TOKEN }}
+        run: |
+          gh workflow run bump-homebrew.yml --repo auraoneai/homebrew-open -f flagship="${{ vars.AURAONE_FLAGSHIP_ID }}" -f version="${GITHUB_REF_NAME#v}"
+          gh workflow run bump-winget.yml --repo auraoneai/winget-pkgs -f package="${{ vars.AURAONE_WINGET_ID }}" -f version="${GITHUB_REF_NAME#v}"

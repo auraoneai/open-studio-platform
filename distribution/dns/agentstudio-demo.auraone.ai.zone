@@ -1,0 +1,4 @@
+; Agent Studio Open hosted-demo DNS draft for auraone.ai.
+; Apply through the AuraOne Cloudflare zone after product launch approval.
+
+agentstudio-demo.auraone.ai. 300 IN A 76.76.21.21

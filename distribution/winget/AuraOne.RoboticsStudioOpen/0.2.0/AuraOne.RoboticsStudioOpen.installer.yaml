@@ -1,0 +1,16 @@
+PackageIdentifier: AuraOne.RoboticsStudioOpen
+PackageVersion: 0.2.0
+InstallerType: wix
+Scope: machine
+UpgradeBehavior: install
+Installers:
+  - Architecture: x64
+    InstallerUrl: https://github.com/auraoneai/robotics-studio-open/releases/download/v0.2.0/Robotics-Studio-Open_0.2.0_x64_en-US.msi
+    InstallerSha256: BLOCKED_UNTIL_SIGNED_MSI_SHA256_X64
+    ProductCode: "{BLOCKED-UNTIL-VERIFIED-WIX-PRODUCT-CODE-X64}"
+  - Architecture: arm64
+    InstallerUrl: https://github.com/auraoneai/robotics-studio-open/releases/download/v0.2.0/Robotics-Studio-Open_0.2.0_arm64_en-US.msi
+    InstallerSha256: BLOCKED_UNTIL_SIGNED_MSI_SHA256_ARM64
+    ProductCode: "{BLOCKED-UNTIL-VERIFIED-WIX-PRODUCT-CODE-ARM64}"
+ManifestType: installer
+ManifestVersion: 1.9.0

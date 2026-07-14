@@ -1,0 +1,57 @@
+{
+  "name": "rubric-studio",
+  "displayName": "Rubric Studio Open",
+  "description": "Open Rubric Studio Open projects in VS Code with schema validation and the Rubric Studio Open webview.",
+  "version": "0.0.1",
+  "publisher": "auraone",
+  "license": "MIT",
+  "files": [
+    "extension.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "vscode": "^1.92.0"
+  },
+  "categories": [
+    "Other",
+    "Linters"
+  ],
+  "keywords": [
+    "ai",
+    "evals",
+    "rubric",
+    "rubric-studio-open"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/auraoneai/rubric-studio-open.git"
+  },
+  "homepage": "https://auraone.ai/open/rubric-studio-open",
+  "bugs": {
+    "url": "https://github.com/auraoneai/rubric-studio-open/issues"
+  },
+  "activationEvents": [
+    "onCommand:rubricStudio.openProject",
+    "workspaceContains:rubric.toml"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "rubricStudio.openProject",
+        "title": "Rubric Studio Open: Open Project"
+      }
+    ],
+    "configuration": {
+      "title": "Rubric Studio Open",
+      "properties": {
+        "rubricStudio.validator.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Rubric Studio Open project validation."
+        }
+      }
+    }
+  }
+}

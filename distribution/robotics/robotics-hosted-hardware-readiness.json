@@ -1,0 +1,142 @@
+{
+  "$schema": "https://schemas.auraone.ai/open-studio/robotics-hosted-hardware-readiness/v1.json",
+  "status": "evidence-packet-prepared-hardware-execution-pending",
+  "checked_date": "2026-05-19",
+  "completion_rule": "Do not mark Robotics hosted/hardware readiness complete until all required CI jobs pass in the public run, the GPU job is enabled and successful, target-hardware baseline evidence is attached, branch-protection evidence is attached, and the 14-day green CI history is attached.",
+  "repository": "auraoneai/robotics-studio-open",
+  "prd": "docs/prds/robotics-studio-open-prd.md",
+  "evidence_dir_env": "AURAONE_ROBOTICS_HARDWARE_EVIDENCE_DIR",
+  "allowed_evidence_extensions": [
+    ".md",
+    ".json",
+    ".txt",
+    ".png",
+    ".pdf"
+  ],
+  "setup_documents": [
+    {
+      "path": "docs/evidence/product/robotics-hosted-hardware/RUNNER_SETUP.md",
+      "required_terms": [
+        "ROBOTICS_GPU_CI_ENABLED",
+        "self-hosted",
+        "linux",
+        "x64",
+        "gpu",
+        "gpu-video-embedding",
+        "fourteen-day-green-ci",
+        "AURAONE_ROBOTICS_HARDWARE_EVIDENCE_DIR"
+      ]
+    }
+  ],
+  "branch_protection_required_contexts": [
+    "DCO / dco",
+    "CI / linux-x64",
+    "CI / linux-arm64",
+    "CI / macos-arm64",
+    "CI / macos-x64",
+    "CI / windows-x64",
+    "CI / gpu-video-embedding",
+    "Accessibility and Performance / qa",
+    "Security, SBOM, and License / release-security"
+  ],
+  "workflows": {
+    "ci": {
+      "workflow": "CI",
+      "run_id": 26158186545,
+      "local_path": "opensource/robotics-studio-open/.github/workflows/ci.yml",
+      "repair_pr": {
+        "number": 33,
+        "url": "https://github.com/auraoneai/robotics-studio-open/pull/33",
+        "head_sha": "1f0b8c8f6855a781fb603ed22dd5b2189512ec19",
+        "run_id": 26128867514,
+        "run_url": "https://github.com/auraoneai/robotics-studio-open/actions/runs/26128867514",
+        "macos_x64_job_url": "https://github.com/auraoneai/robotics-studio-open/actions/runs/26128867514/job/76849158417",
+        "codeowners_review_teams_requested": [
+          "auraoneai/robotics-studio-maintainers",
+          "auraoneai/security"
+        ],
+        "status": "merged; fresh main run 26158186545 passed the non-GPU OS matrix including CI / macos-x64; GPU remains skipped pending runner enablement"
+      },
+      "required_jobs": [
+        "CI / linux-x64",
+        "CI / linux-arm64",
+        "CI / macos-arm64",
+        "CI / macos-x64",
+        "CI / windows-x64",
+        "CI / gpu-video-embedding"
+      ],
+      "gpu_enablement_variable": "ROBOTICS_GPU_CI_ENABLED",
+      "gpu_runner_labels": [
+        "self-hosted",
+        "linux",
+        "x64",
+        "gpu"
+      ],
+      "gpu_script": "opensource/robotics-studio-open/scripts/verify-gpu-smoke.sh"
+    },
+    "accessibility_performance": {
+      "workflow": "Accessibility and Performance",
+      "run_id": 26158186365,
+      "local_path": "opensource/robotics-studio-open/.github/workflows/accessibility-performance.yml",
+      "required_jobs": [
+        "Accessibility and Performance / qa"
+      ],
+      "performance_script": "opensource/robotics-studio-open/scripts/verify-performance-baseline.sh"
+    },
+    "security": {
+      "workflow": "Security, SBOM, and License",
+      "run_id": 26158186431,
+      "local_path": "opensource/robotics-studio-open/.github/workflows/security-sbom-license.yml",
+      "required_jobs": [
+        "Security, SBOM, and License / release-security"
+      ]
+    }
+  },
+  "required_external_evidence": [
+    {
+      "key": "m2-pro-performance-baseline",
+      "name": "M2 Pro target hardware performance baseline",
+      "required_evidence": [
+        "Machine model, CPU/GPU/RAM, and macOS version",
+        "Commit SHA, app version, engine version, and dataset fixture",
+        "Cold open, warm open, scrub FPS, clustering runtime, and export runtime"
+      ]
+    },
+    {
+      "key": "linux-x86-performance-baseline",
+      "name": "Linux x86_64 target hardware performance baseline",
+      "required_evidence": [
+        "Machine model, CPU/GPU/RAM, distro, and kernel version",
+        "Commit SHA, app version, engine version, and dataset fixture",
+        "Cold open, warm open, scrub FPS, clustering runtime, and export runtime"
+      ]
+    },
+    {
+      "key": "windows-11-performance-baseline",
+      "name": "Windows 11 target hardware performance baseline",
+      "required_evidence": [
+        "Machine model, CPU/GPU/RAM, and Windows build",
+        "Commit SHA, app version, engine version, and dataset fixture",
+        "Cold open, warm open, scrub FPS, clustering runtime, and export runtime"
+      ]
+    },
+    {
+      "key": "gpu-decode-fixture",
+      "name": "GPU decode and embedding fixture run",
+      "required_evidence": [
+        "Passing hosted job URL for CI / gpu-video-embedding",
+        "nvidia-smi output with GPU model, driver, and memory",
+        "Video decode and embedding smoke outputs from the approved runner"
+      ]
+    },
+    {
+      "key": "fourteen-day-green-ci",
+      "name": "Fourteen-day green main CI history",
+      "required_evidence": [
+        "Start and end dates after all required checks were enabled",
+        "Run list or dashboard export showing required workflows remained green",
+        "Exceptions/reruns documented with maintainer approval if any run was retried"
+      ]
+    }
+  ]
+}

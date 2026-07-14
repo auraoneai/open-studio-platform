@@ -1,0 +1,13 @@
+Package: robotics-studio-open
+Version: 0.2.0
+Section: devel
+Priority: optional
+Architecture: amd64
+Maintainer: AuraOne Open Studio <opensource@auraone.ai>
+Homepage: https://robotics-studio.auraone.ai/
+Vcs-Browser: https://github.com/auraoneai/robotics-studio-open
+Depends: libwebkit2gtk-4.1-0 | libwebkit2gtk-4.0-37, libayatana-appindicator3-1, librsvg2-2, ca-certificates
+Description: Local-first IDE for reviewed teleop and VLA datasets
+ Robotics Studio Open reviews robotics episodes locally, scrubs
+ synchronized sensor streams, clusters failures, probes policies,
+ and exports explicit manifests for local disk, Hugging Face, or intake.

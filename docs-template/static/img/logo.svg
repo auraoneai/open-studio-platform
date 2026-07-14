@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AuraOne">
+  <rect width="64" height="64" rx="14" fill="#080604"/>
+  <rect x="3" y="3" width="58" height="58" rx="12" fill="none" stroke="#F6F1E8" stroke-opacity=".16" stroke-width="2"/>
+  <text x="32" y="41" text-anchor="middle" fill="#F6F1E8" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="36">a</text>
+</svg>

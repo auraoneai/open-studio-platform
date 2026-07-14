@@ -1,0 +1,54 @@
+{
+  "name": "@auraone/robotics-studio",
+  "version": "0.2.1",
+  "description": "Robot episode dataset manifest validation and release metadata companion for Robotics Studio Open.",
+  "license": "MIT",
+  "type": "module",
+  "types": "./src/index.d.ts",
+  "bin": {
+    "robotics-studio": "src/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dataset-manifest",
+    "episode-review",
+    "lerobot",
+    "local-first",
+    "robot-datasets",
+    "robotics",
+    "robotics-evaluation",
+    "teleoperation",
+    "vla",
+    "vla-evaluation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/auraoneai/robotics-studio-open.git"
+  },
+  "homepage": "https://auraone.ai/open/robotics-studio",
+  "bugs": {
+    "url": "https://github.com/auraoneai/robotics-studio-open/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "node --test",
+    "pack:check": "npm pack --dry-run"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Agent Studio Open
+Comment=Debug, replay, compare, and regression-test MCP and A2A agents locally
+Exec=agentstudio %U
+Icon=ai.auraone.agentstudio
+Terminal=false
+Categories=Development;IDE;
+MimeType=application/vnd.auraone.agentstudio.trace;application/vnd.auraone.auraonepkg;
+StartupWMClass=Agent Studio Open
+Keywords=agent;mcp;a2a;debug;replay;trace;

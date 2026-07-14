@@ -1,0 +1,21 @@
+name: Rubric Studio Open Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        required: true
+        type: string
+      channel:
+        required: true
+        default: stable
+        type: choice
+        options: [stable, beta, nightly]
+
+jobs:
+  call-release:
+    uses: auraoneai/AuraOne/.github/workflows/rubric-studio-open-release.yml@main
+    with:
+      tag: ${{ inputs.tag }}
+      channel: ${{ inputs.channel }}
+    secrets: inherit

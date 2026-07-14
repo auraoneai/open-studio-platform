@@ -1,0 +1,55 @@
+name: Feature request
+description: Propose an additive platform capability.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      options:
+        - Additive platform feature
+        - Flagship-specific feature that may belong in the Platform
+        - Documentation
+        - Governance
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What user or maintainer problem does this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+  - type: checkboxes
+    id: flagships
+    attributes:
+      label: Affected flagships
+      options:
+        - label: Rubric Studio Open
+        - label: Robotics Studio Open
+        - label: Agent Studio Open
+        - label: Future flagship only
+  - type: checkboxes
+    id: rfc
+    attributes:
+      label: RFC triggers
+      options:
+        - label: This changes a vendor choice.
+        - label: This changes telemetry, crash reporting, signing, update, keychain, intake, CSP, or Tauri ACL posture.
+        - label: This introduces a breaking platform API or schema change.
+        - label: This adds or changes outbound network destinations.
+        - label: None of the RFC triggers apply.
+  - type: textarea
+    id: verification
+    attributes:
+      label: Suggested verification
+      description: Commands, staging URLs, tests, or acceptance evidence.

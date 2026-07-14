@@ -1,0 +1,20 @@
+project: robotics-studio-open
+format: cyclonedx-json
+date: "2026-05-13"
+components:
+  - app-shell
+  - rust-crates
+  - python-sidecars
+  - robostudio-engine
+  - installer-scripts
+  - release-artifacts
+outputs:
+  sbom: dist/sbom/robotics-studio-open.cdx.json
+  attestation: dist/sbom/robotics-studio-open.intoto.jsonl
+required_checks:
+  - pip-audit
+  - cargo-audit
+  - cargo-deny
+  - gitleaks
+  - license-policy
+  - checksum-manifest

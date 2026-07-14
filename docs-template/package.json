@@ -1,0 +1,39 @@
+{
+  "name": "@auraone/open-studio-docs-template",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Docusaurus 3 docs template for AuraOne Open Studio flagships.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "docusaurus start --host 127.0.0.1",
+    "build": "node scripts/build-docusaurus.mjs",
+    "serve": "docusaurus serve --host 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "clear": "docusaurus clear",
+    "verify": "pnpm typecheck && pnpm build"
+  },
+  "dependencies": {
+    "@docusaurus/core": "3.10.1",
+    "@docusaurus/preset-classic": "3.10.1",
+    "@docusaurus/theme-search-algolia": "3.10.1",
+    "@mdx-js/react": "3.1.1",
+    "aura-glass": "3.1.1",
+    "clsx": "2.1.1",
+    "prism-react-renderer": "2.4.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@docusaurus/plugin-content-docs": "3.10.1",
+    "@docusaurus/module-type-aliases": "3.10.1",
+    "@docusaurus/tsconfig": "3.10.1",
+    "@docusaurus/types": "3.10.1",
+    "@types/node": "22.10.2",
+    "@types/react": "18.3.12",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=20.19.5"
+  },
+  "packageManager": "pnpm@10.18.0"
+}

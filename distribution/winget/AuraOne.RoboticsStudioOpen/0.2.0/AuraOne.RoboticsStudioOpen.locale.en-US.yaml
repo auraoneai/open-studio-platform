@@ -1,0 +1,18 @@
+PackageIdentifier: AuraOne.RoboticsStudioOpen
+PackageVersion: 0.2.0
+PackageLocale: en-US
+Publisher: AuraOne
+PublisherUrl: https://auraone.ai
+PackageName: Robotics Studio Open
+PackageUrl: https://auraone.ai/open/robotics-studio
+License: MIT
+LicenseUrl: https://github.com/auraoneai/robotics-studio-open/blob/main/LICENSE
+ShortDescription: Local-first IDE for reviewed teleop and VLA datasets.
+Description: Robotics Studio Open is a local-first desktop IDE for reviewing robotics episodes, synchronized sensor streams, failure clusters, dataset health, and evidence exports.
+Tags:
+  - robotics
+  - datasets
+  - tauri
+  - auraone
+ManifestType: defaultLocale
+ManifestVersion: 1.9.0

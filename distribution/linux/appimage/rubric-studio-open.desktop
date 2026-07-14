@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Rubric Studio Open
+Comment=Author, test, calibrate, diff, and export AI evaluation rubrics locally
+Exec=rubricstudio %U
+Icon=ai.auraone.rubricstudio
+Terminal=false
+Categories=Development;IDE;
+MimeType=application/vnd.auraone.rubric;application/vnd.auraone.auraonepkg;
+StartupWMClass=Rubric Studio Open
+Keywords=rubric;eval;evaluation;llm;judge;calibration;

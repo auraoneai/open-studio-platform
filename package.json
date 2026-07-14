@@ -1,0 +1,108 @@
+{
+  "name": "@auraone/open-studio-platform",
+  "version": "0.4.0",
+  "private": true,
+  "description": "Shared contracts, Proofline UI foundations, IDE components, and release controls for AuraOne Open Studio apps.",
+  "keywords": [
+    "auraone",
+    "open-studio",
+    "developer-tools",
+    "local-first",
+    "tauri",
+    "react",
+    "design-system",
+    "release-engineering"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/auraoneai/open-studio-platform.git"
+  },
+  "homepage": "https://github.com/auraoneai/open-studio-platform#readme",
+  "bugs": {
+    "url": "https://github.com/auraoneai/open-studio-platform/issues"
+  },
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@10.18.0",
+  "engines": {
+    "node": ">=20.19.5"
+  },
+  "workspaces": [
+    "packages/*",
+    "templates/tauri-app",
+    "docs-template",
+    "services/*"
+  ],
+  "scripts": {
+    "build": "pnpm --dir packages/platform-contracts build && pnpm --dir packages/proofline-oss build && pnpm --dir packages/aura-ide-kit build && pnpm --dir docs-template build",
+    "typecheck": "pnpm --dir packages/platform-contracts run type-check && pnpm --dir packages/proofline-oss typecheck && pnpm --dir packages/aura-ide-kit run typecheck && pnpm --dir packages/aura-ide-kit run build && pnpm --dir templates/tauri-app run typecheck && pnpm --dir docs-template run typecheck",
+    "test": "cargo test --workspace && pnpm --dir packages/platform-contracts build && pnpm --dir packages/proofline-oss test && pnpm --dir packages/proofline-oss verify:public-assets && node --test scripts/test/official-style-boundary.test.mjs tests/platform-contracts.test.mjs tests/flagship_integration_contracts_test.mjs tests/intake_roles_test.mjs tests/intake_schema_policy_test.mjs tests/security_checklists_test.mjs tests/docs_version_sync_test.mjs tests/platform_operating_cadence_test.mjs tests/maintainers_page_test.mjs tests/dco_guidance_test.mjs tests/community_channels_test.mjs tests/security_policy_test.mjs && pnpm --dir packages/aura-ide-kit test",
+    "verify": "node scripts/verify-platform.mjs",
+    "verify:linux-package-matrix": "node scripts/verify-linux-package-matrix.mjs",
+    "verify:linux-artifacts": "node scripts/verify-linux-artifact-readiness.mjs",
+    "verify:winget-matrix": "node scripts/verify-winget-matrix.mjs",
+    "verify:windows-msi-matrix": "node scripts/verify-windows-msi-matrix.mjs",
+    "verify:code-gates": "node scripts/run-cargo-audit.mjs --no-fetch && node scripts/verify-powershell-syntax.mjs && node --test scripts/test/cargo-audit-accepted-advisories.test.mjs scripts/test/platform-code-verification-workflow.test.mjs tests/platform-release-flow.test.mjs tests/flagship_integration_contracts_test.mjs && cargo test --workspace",
+    "verify:release-ops": "node scripts/verify-release-ops.mjs",
+    "verify:release-evidence": "node scripts/verify-release-evidence.mjs --require-local-artifacts",
+    "verify:release-evidence:publishable": "node scripts/verify-release-evidence.mjs --publishable --require-local-artifacts",
+    "verify:distribution-staging": "node scripts/verify-distribution-staging.mjs",
+    "release:oss:preflight": "node scripts/release-oss-preflight.mjs",
+    "release:oss:dry-run": "node scripts/release-oss-preflight.mjs --release-plan distribution/release-plan.uiuxoss.json --allow-blocked",
+    "verify:release-blockers": "node scripts/verify-release-blocker-preflight.mjs",
+    "verify:signing-custody": "node scripts/verify-signing-custody-readiness.mjs",
+    "verify:windows-package-identity": "node scripts/verify-windows-package-identity-readiness.mjs",
+    "verify:launch-ops": "node scripts/verify-launch-ops-readiness.mjs",
+    "verify:cloud-import-consumer": "node scripts/verify-cloud-import-consumer-readiness.mjs",
+    "verify:root-governance": "node scripts/verify-root-governance-evidence.mjs",
+    "verify:ga-approvals": "node scripts/verify-ga-approval-evidence.mjs",
+    "verify:dco-enforcement": "node scripts/verify-dco-enforcement-readiness.mjs",
+    "verify:public-blockers": "node scripts/verify-public-blocker-issues-readiness.mjs",
+    "verify:website-screenshots": "node scripts/verify-website-screenshot-routes-readiness.mjs",
+    "verify:root-hosted-actions": "node scripts/verify-root-hosted-actions-readiness.mjs",
+    "launch-ops:templates": "node scripts/generate-launch-ops-evidence-templates.mjs --force",
+    "windows-evidence:templates": "node scripts/generate-windows-evidence-templates.mjs --force",
+    "windows-msi:prepare": "node scripts/prepare-windows-msi-release.mjs",
+    "winget:prepare": "node scripts/prepare-winget-manifests.mjs",
+    "release:product-sboms": "node scripts/generate-product-release-sboms.mjs",
+    "verify:observability": "node scripts/verify-observability-readiness.mjs",
+    "verify:robotics-hosted-hardware": "node scripts/verify-robotics-hosted-hardware-readiness.mjs",
+    "robotics-hardware:templates": "node scripts/generate-robotics-hardware-evidence-templates.mjs --force",
+    "verify:agent4-release-ops": "node scripts/verify-agent4-release-ops.mjs",
+    "verify:robotics-release-ops": "node scripts/verify-robotics-release-ops.mjs",
+    "verify:extensions": "cargo test -p auraone-platform-video -p auraone-platform-dataset-stream -p auraone-platform-ros-bag -p auraone-platform-mcp -p auraone-platform-otlp -p auraone-platform-llm-gateway && node tests/intake_roles_test.mjs",
+    "smoke:live": "node scripts/smoke-live-platform.mjs",
+    "security:configs": "cd ../.. && node opensource/open-studio-platform/compliance/scripts/check-security-configs.mjs",
+    "security:licenses": "cd ../.. && node opensource/open-studio-platform/compliance/scripts/check-npm-licenses.mjs",
+    "security:telemetry": "cd ../.. && node opensource/open-studio-platform/compliance/scripts/check-telemetry-forbidden-fields.mjs --self-test",
+    "security:intake": "cd ../.. && node opensource/open-studio-platform/compliance/scripts/check-intake-privacy-exclusions.mjs --self-test",
+    "security:notice": "cd ../.. && node opensource/open-studio-platform/compliance/scripts/check-notice-readiness.mjs",
+    "security:signing": "node scripts/check-signing-wrapper-usage.mjs ../..",
+    "security:secrets": "gitleaks detect --source ../.. --config configs/gitleaks/gitleaks.toml --redact",
+    "security:sbom": "npm_config_user_agent=npm npm_execpath=$(command -v npm) cyclonedx-npm --ignore-npm-errors --output-file compliance/sbom-npm.cdx.json",
+    "security:cargo-audit": "node scripts/run-cargo-audit.mjs",
+    "security:all": "pnpm run security:configs && pnpm run security:telemetry && pnpm run security:intake && pnpm run security:notice && pnpm run security:signing && pnpm run security:licenses"
+  },
+  "devDependencies": {
+    "@cyclonedx/cyclonedx-npm": "^1.19.0",
+    "@docusaurus/core": "3.10.1",
+    "@docusaurus/preset-classic": "3.10.1",
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "^22.10.2",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^8.57.1",
+    "jest": "^29.7.0",
+    "jsdom": "^25.0.1",
+    "license-checker-rseidelsohn": "^4.4.2",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.8"
+  },
+  "pnpm": {
+    "overrides": {
+      "serialize-javascript": "7.0.3"
+    }
+  }
+}

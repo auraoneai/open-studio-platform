@@ -1,0 +1,12 @@
+{
+  "event_name": "project_opened",
+  "timestamp": "2026-05-13T00:00:00.000Z",
+  "flagship": "rubric-studio-open",
+  "platform": "darwin",
+  "version": "0.1.0",
+  "payload": {
+    "source": "recent_projects",
+    "duration_ms": 14,
+    "status": "success"
+  }
+}

@@ -1,0 +1,23 @@
+[package]
+name = "auraone-platform-crash"
+description = "AuraOne Open Studio crash reporting abstraction with Sentry posture, default-off opt-in, scrubbing, and minidump hooks."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+chrono.workspace = true
+dirs.workspace = true
+minidump-writer = "0.11.0"
+regex.workspace = true
+reqwest.workspace = true
+semver.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+uuid.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

@@ -1,0 +1,232 @@
+{
+  "$schema": "https://schemas.auraone.ai/open-studio/linux-artifact-readiness/v1.json",
+  "status": "metadata-prepared-artifacts-and-signatures-pending",
+  "evidence_kind": "staged",
+  "version": "0.2.0",
+  "archival_release_evidence": [
+    "distribution/release-evidence/rubric-studio-open/0.1.0.json",
+    "distribution/release-evidence/robotics-studio-open/0.1.0.json",
+    "distribution/release-evidence/agent-studio-open/0.1.0.json"
+  ],
+  "evidence_dir_env": "AURAONE_LINUX_ARTIFACT_EVIDENCE_DIR",
+  "allowed_evidence_extensions": [".md", ".json", ".txt", ".png", ".pdf"],
+  "completion_rule": "Do not mark Linux artifact/signature readiness complete until AppImage, deb, rpm, detached package signatures, Linux package repository metadata, signing-custody evidence, and clean Linux install evidence exist for each flagship's supported architecture set.",
+  "signing": {
+    "public_key_url": "https://updates.auraone.ai/keys/auraone-open.gpg",
+    "fingerprint": "F909806D13D9CD4CF403FA3C8C61E177EB6329E7",
+    "signing_script": "scripts/sign-linux.sh",
+    "required_signature_suffix": ".asc",
+    "per_artifact_sha256_suffix": ".sha256"
+  },
+  "products": [
+    {
+      "id": "rubric-studio-open",
+      "name": "Rubric Studio Open",
+      "repository": "auraoneai/rubric-studio-open",
+      "prd": "docs/prds/rubric-studio-open-prd.md",
+      "metadata": [
+        "distribution/linux/appimage/rubric-studio-open.desktop",
+        "distribution/linux/appimage/ai.auraone.rubricstudio.open.metainfo.xml",
+        "distribution/linux/deb/rubric-studio-open.control",
+        "distribution/linux/rpm/rubric-studio-open.spec"
+      ],
+      "required_artifacts": [
+        {
+          "format": "AppImage",
+          "arch": "x64",
+          "accepted_names": [
+            "rubric-studio-open_0.2.0_amd64.AppImage",
+            "Rubric.Studio.Open_0.2.0_amd64.AppImage"
+          ]
+        },
+        {
+          "format": "AppImage",
+          "arch": "arm64",
+          "accepted_names": [
+            "rubric-studio-open_0.2.0_arm64.AppImage",
+            "Rubric.Studio.Open_0.2.0_arm64.AppImage"
+          ]
+        },
+        {
+          "format": "deb",
+          "arch": "amd64",
+          "accepted_names": [
+            "rubric-studio-open_0.2.0_amd64.deb",
+            "Rubric.Studio.Open_0.2.0_amd64.deb"
+          ]
+        },
+        {
+          "format": "deb",
+          "arch": "arm64",
+          "accepted_names": [
+            "rubric-studio-open_0.2.0_arm64.deb",
+            "Rubric.Studio.Open_0.2.0_arm64.deb"
+          ]
+        },
+        {
+          "format": "rpm",
+          "arch": "x86_64",
+          "accepted_names": [
+            "rubric-studio-open-0.2.0-1.x86_64.rpm",
+            "Rubric.Studio.Open-0.2.0-1.x86_64.rpm"
+          ]
+        },
+        {
+          "format": "rpm",
+          "arch": "aarch64",
+          "accepted_names": [
+            "rubric-studio-open-0.2.0-1.aarch64.rpm",
+            "Rubric.Studio.Open-0.2.0-1.aarch64.rpm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "robotics-studio-open",
+      "name": "Robotics Studio Open",
+      "repository": "auraoneai/robotics-studio-open",
+      "prd": "docs/prds/robotics-studio-open-prd.md",
+      "metadata": [
+        "distribution/linux/appimage/robotics-studio-open.desktop",
+        "distribution/linux/appimage/ai.auraone.roboticsstudio.metainfo.xml",
+        "distribution/linux/deb/robotics-studio-open.control",
+        "distribution/linux/rpm/robotics-studio-open.spec"
+      ],
+      "required_artifacts": [
+        {
+          "format": "AppImage",
+          "arch": "x64",
+          "accepted_names": [
+            "robotics-studio-open_0.2.0_amd64.AppImage",
+            "Robotics.Studio.Open_0.2.0_amd64.AppImage"
+          ]
+        },
+        {
+          "format": "AppImage",
+          "arch": "arm64",
+          "accepted_names": [
+            "robotics-studio-open_0.2.0_arm64.AppImage",
+            "Robotics.Studio.Open_0.2.0_arm64.AppImage"
+          ]
+        },
+        {
+          "format": "deb",
+          "arch": "amd64",
+          "accepted_names": [
+            "robotics-studio-open_0.2.0_amd64.deb",
+            "Robotics.Studio.Open_0.2.0_amd64.deb"
+          ]
+        },
+        {
+          "format": "deb",
+          "arch": "arm64",
+          "accepted_names": [
+            "robotics-studio-open_0.2.0_arm64.deb",
+            "Robotics.Studio.Open_0.2.0_arm64.deb"
+          ]
+        },
+        {
+          "format": "rpm",
+          "arch": "x86_64",
+          "accepted_names": [
+            "robotics-studio-open-0.2.0-1.x86_64.rpm",
+            "Robotics.Studio.Open-0.2.0-1.x86_64.rpm"
+          ]
+        },
+        {
+          "format": "rpm",
+          "arch": "aarch64",
+          "accepted_names": [
+            "robotics-studio-open-0.2.0-1.aarch64.rpm",
+            "Robotics.Studio.Open-0.2.0-1.aarch64.rpm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "agent-studio-open",
+      "name": "Agent Studio Open",
+      "repository": "auraoneai/agent-studio-open",
+      "prd": "docs/prds/agent-studio-open-prd.md",
+      "metadata": [
+        "distribution/linux/appimage/agent-studio-open.desktop",
+        "distribution/linux/appimage/ai.auraone.agentstudio.metainfo.xml",
+        "distribution/linux/deb/agent-studio-open.control",
+        "distribution/linux/rpm/agent-studio-open.spec"
+      ],
+      "required_artifacts": [
+        {
+          "format": "AppImage",
+          "arch": "x64",
+          "accepted_names": [
+            "Agent.Studio.Open_0.2.0_amd64.AppImage",
+            "agent-studio-open_0.2.0_amd64.AppImage"
+          ]
+        },
+        {
+          "format": "deb",
+          "arch": "amd64",
+          "accepted_names": [
+            "Agent.Studio.Open_0.2.0_amd64.deb",
+            "agent-studio-open_0.2.0_amd64.deb"
+          ]
+        },
+        {
+          "format": "rpm",
+          "arch": "x86_64",
+          "accepted_names": [
+            "Agent.Studio.Open-0.2.0-1.x86_64.rpm",
+            "agent-studio-open-0.2.0-1.x86_64.rpm"
+          ]
+        }
+      ]
+    }
+  ],
+  "required_evidence": [
+    {
+      "key": "linux-build-run",
+      "name": "Linux artifact build run",
+      "required_evidence": [
+        "Linux runner or container details",
+        "Build command and version",
+        "Artifact list with hashes"
+      ]
+    },
+    {
+      "key": "signing-custody",
+      "name": "Release GPG signing custody",
+      "required_evidence": [
+        "Controlled key custody location",
+        "Release GPG fingerprint",
+        "Signer or hosted workflow audit record"
+      ]
+    },
+    {
+      "key": "detached-signatures",
+      "name": "Detached Linux package signatures",
+      "required_evidence": [
+        "Per-artifact .asc signatures",
+        "Signature verification output",
+        "Clean keyring verification command"
+      ]
+    },
+    {
+      "key": "package-repo-metadata",
+      "name": "Linux package repository metadata",
+      "required_evidence": [
+        "apt/yum repository metadata",
+        "Repository metadata signature",
+        "Install-source configuration sample"
+      ]
+    },
+    {
+      "key": "clean-linux-install",
+      "name": "Clean Linux install QA",
+      "required_evidence": [
+        "Fresh Ubuntu/Fedora runner or VM details",
+        "Install and launch smoke output",
+        "Uninstall or upgrade smoke output"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+; Agent Studio Open DNS draft for auraone.ai.
+; Apply through the AuraOne Cloudflare zone after product launch approval.
+
+agentstudio.auraone.ai. 300 IN A 76.76.21.21
+_status.agentstudio.auraone.ai. 300 IN CNAME statuspage.betteruptime.com.
+_github-challenge-agentstudio.auraone.ai. 300 IN TXT "github-pages-verification-token-issued-by-github"
+_vscode-agentstudio.auraone.ai. 300 IN TXT "vscode-marketplace-domain-verification-issued-by-microsoft"

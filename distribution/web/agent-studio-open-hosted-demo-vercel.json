@@ -1,0 +1,38 @@
+{
+  "product": "agent-studio-open",
+  "surface": "hosted-demo",
+  "owner": "platform-release",
+  "status": "production-live",
+  "date": "2026-05-13",
+  "provider": "vercel-static",
+  "vercel_project": "veerone/agent-studio-open-demo",
+  "vercel_deployment_id": "dpl_CvNJWPs9x6yW9DporpePzVy8wB9y",
+  "vercel_production_url": "https://agent-studio-open-demo.vercel.app/",
+  "vercel_verified_at": "2026-05-13T21:33:47Z",
+  "vercel_custom_domain": "agentstudio-demo.auraone.ai",
+  "vercel_domain_inspected_at": "2026-05-13T17:30:22Z",
+  "vercel_domain_status": "live",
+  "vercel_alias_attempted_at": "2026-05-13T21:33:47Z",
+  "vercel_alias_status": "live",
+  "public_host": "agentstudio-demo.auraone.ai",
+  "public_path": "/",
+  "project_root": "opensource/agent-studio-open",
+  "build_command": "pnpm --filter=@auraone/agent-studio-open run build:demo",
+  "output_directory": "opensource/agent-studio-open/dist",
+  "asset_base": "/",
+  "required_routes": [
+    "https://agentstudio-demo.auraone.ai/",
+    "https://agentstudio-demo.auraone.ai/assets/*"
+  ],
+  "verified_routes": [
+    "https://agent-studio-open-demo.vercel.app/",
+    "https://agentstudio-demo.auraone.ai/"
+  ],
+  "runtime_evidence": [
+    "Hosted demo label rendered",
+    "Continue in browser edition handoff rendered",
+    "Curated server public-docs-search-demo rendered",
+    "Recording and edition toggle controls disabled"
+  ],
+  "external_blockers": []
+}

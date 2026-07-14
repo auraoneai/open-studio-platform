@@ -1,0 +1,54 @@
+{
+  "$schema": "https://schemas.auraone.ai/open-studio/flagships/v1.json",
+  "platformVersion": "0.4.0",
+  "releasePublisher": "AuraOne",
+  "homebrewTap": "auraoneai/open",
+  "homebrewRepository": "https://github.com/auraoneai/homebrew-open",
+  "wingetPublisher": "AuraOne",
+  "gpgFingerprint": "F909806D13D9CD4CF403FA3C8C61E177EB6329E7",
+  "updateSigningPublicKey": "DAKD/Nqj4KoXZpXv9li/zVQv+2LhThXE5J9tx0Wl1B8=",
+  "flagships": [
+    {
+      "id": "rubric-studio-open",
+      "displayName": "Rubric Studio Open",
+      "binaryName": "rubricstudio",
+      "bundleIdentifier": "ai.auraone.rubricstudio.open",
+      "githubRepository": "auraoneai/rubric-studio-open",
+      "homebrewCask": "rubric-studio-open",
+      "wingetPackageIdentifier": "AuraOne.RubricStudioOpen",
+      "macArtifact": "Rubric.Studio.Open_${VERSION}_aarch64.dmg",
+      "windowsX64Artifact": "Rubric-Studio-Open_${VERSION}_x64_en-US.msi",
+      "windowsArm64Artifact": "Rubric-Studio-Open_${VERSION}_arm64_en-US.msi",
+      "linuxX64Artifact": "rubric-studio-open_${VERSION}_amd64.AppImage",
+      "linuxArm64Artifact": "rubric-studio-open_${VERSION}_arm64.AppImage"
+    },
+    {
+      "id": "robotics-studio-open",
+      "displayName": "Robotics Studio Open",
+      "binaryName": "robostudio",
+      "bundleIdentifier": "ai.auraone.roboticsstudio",
+      "githubRepository": "auraoneai/robotics-studio-open",
+      "homebrewCask": "robotics-studio-open",
+      "wingetPackageIdentifier": "AuraOne.RoboticsStudioOpen",
+      "macArtifact": "Robotics.Studio.Open_${VERSION}_aarch64.dmg",
+      "windowsX64Artifact": "Robotics-Studio-Open_${VERSION}_x64_en-US.msi",
+      "windowsArm64Artifact": "Robotics-Studio-Open_${VERSION}_arm64_en-US.msi",
+      "linuxX64Artifact": "robotics-studio-open_${VERSION}_amd64.AppImage",
+      "linuxArm64Artifact": "robotics-studio-open_${VERSION}_arm64.AppImage"
+    },
+    {
+      "id": "agent-studio-open",
+      "displayName": "Agent Studio Open",
+      "binaryName": "agentstudio",
+      "bundleIdentifier": "ai.auraone.agentstudio",
+      "githubRepository": "auraoneai/agent-studio-open",
+      "homebrewCask": "agent-studio-open",
+      "wingetPackageIdentifier": "AuraOne.AgentStudioOpen",
+      "macArtifact": "Agent.Studio.Open_${VERSION}_aarch64.dmg",
+      "windowsX64Artifact": "Agent.Studio.Open_${VERSION}_x64_en-US.msi",
+      "windowsArm64Artifact": null,
+      "linuxX64Artifact": "Agent.Studio.Open_${VERSION}_amd64.AppImage",
+      "linuxArm64Artifact": null
+    }
+  ]
+}

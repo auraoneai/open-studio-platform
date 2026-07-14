@@ -1,0 +1,13 @@
+node_modules/
+dist/
+target/
+.vercel/
+.DS_Store
+*.log
+*.dmg
+*.pkg
+*.msi
+*.exe
+*.AppImage
+*.deb
+*.rpm

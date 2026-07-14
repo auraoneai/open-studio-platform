@@ -1,0 +1,74 @@
+name: Bug report
+description: Report a reproducible Open Studio Platform bug.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not report security vulnerabilities here. Email security@auraone.ai.
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Platform surface
+      options:
+        - Tauri shell template
+        - AuraGlass IDE kit
+        - Rust crate
+        - Signing / notarization
+        - Updater
+        - Crash reporting
+        - Telemetry
+        - Keychain
+        - Intake packet
+        - Installer distribution
+        - Docs template
+        - GitHub templates / governance
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - macOS
+        - Windows
+        - Linux
+        - Cross-platform
+        - Not applicable
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: Include exact commands, sample project shape, and observed behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or screenshots
+      description: Remove secrets, user content, file paths, hostnames, and API keys before attaching.
+      render: text
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed API keys, user content, file paths, hostnames, and secrets from this report.
+          required: true
