@@ -2,9 +2,9 @@
 
 This directory contains the evidence-based portfolio context for [`auraoneai/open-studio-platform`](https://github.com/auraoneai/open-studio-platform).
 
-- [Open Studio Platform context dossier](open-studio-platform-context.md) — repository evidence, category boundaries, relationship to the six audited projects, current platform alternatives, gaps, priorities, roadmap, and provenance.
+- [Open Studio Platform context dossier](open-studio-context-dossier.md) — repository evidence, category boundaries, relationship to the six audited projects, current platform alternatives, gaps, priorities, roadmap, and provenance.
 
-Open Studio is treated as **unscored shared context**, not as a seventh product dossier. No SOTA verdict is issued. If it is later scored as a product, **Not Yet SOTA** is this assessment’s recommended starting posture until its evidence gates pass.
+Open Studio is treated as **unscored shared context**, not as a seventh product dossier. No SOTA verdict is issued.
 
 ## Six portfolio dossier locations
 

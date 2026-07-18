@@ -14,7 +14,7 @@ Open Studio Platform is best categorized as an **open-source, reusable secure ap
 
 That category is narrower than an AI workflow builder and broader than a UI library. The closest reference points are Eclipse Theia and VS Code OSS for extensible workbench foundations, Tauri for native shell/security primitives, and Backstage for platform-governance/scaffolding patterns. Dify, Langflow, Flowise, OpenHands, and the six audited portfolio products are adjacent at the application/runtime layer rather than direct substrate equivalents.
 
-**Portfolio status:** unscored context. The canonical portfolio index says Open Studio has no verdict and is excluded from technical scores. No SOTA verdict is issued here. If this repository is later promoted into a scored product lane, **Not Yet SOTA** is this assessment’s recommended starting status until reproducible cross-platform, adoption, integration, security, and operational evidence closes the gaps below.
+**Portfolio status:** unscored context. The canonical portfolio index says Open Studio has no verdict and is excluded from technical scores. No SOTA verdict is issued here; the repository remains contextual and unscored.
 
 ## Scope and method
 
@@ -108,6 +108,26 @@ Legend: **present** = tracked implementation surface; **partial** = some relevan
 | Visual AI workflow runtime | N/A by design | Optional AI framework, not domain runtime | Agent/editor integrations | N/A | N/A | Core purpose | Agent runtime, not visual workflow parity |
 | Portfolio product adapters | None found for the six audited projects | Unverified | Unverified | N/A | Unverified | Product-specific | Product-specific |
 | Reproducible comparative benchmarks | Absent | Unverified here | Unverified here | Security audits/docs available | Unverified here | Unverified here | Unverified here |
+
+## Thirteen contextual dimensions
+
+These dimensions describe platform context only; they are not weighted or scored.
+
+| Dimension | Verified context | Material unknown or gap |
+| --- | --- | --- |
+| Architecture | Product-neutral TypeScript contracts, React packages, Rust crates, edge services, and a Tauri template are tracked. | Cross-package consumer conformance and a stable third-party extension lifecycle are unverified. |
+| APIs | Platform contracts, schemas, MCP, OTLP, LLM-gateway, updater, intake, and telemetry surfaces exist. | Compatibility guarantees, generated API references, and external consumer tests are incomplete. |
+| Auth and security | Capability policies, keychain boundaries, signing tools, disclosure policy, secret scanning, and threat material exist. | Independent assessment, hosted key custody, native-boundary penetration testing, and end-to-end attestation remain unverified. |
+| Reliability | Smoke scripts, readiness records, rollback guidance, and service status material exist. | Current SLO history, fault injection, restore drills, and retained cross-platform evidence are absent. |
+| Performance | Package and native implementations are available for measurement. | No frozen startup, memory, bundle, update, extension-load, or CI benchmark establishes non-inferiority. |
+| Observability | Telemetry, crash, and OTLP contracts/crates plus a telemetry edge service are tracked. | Production dashboards, alerts, trace completeness, privacy verification, and current service evidence are unverified. |
+| Developer experience | IDE components, templates, package READMEs, schemas, and scripts provide reusable starting points. | A clean standalone onboarding run, versioned API site, extension kit, and migration policy are not proven. |
+| Deployment and operations | Release tooling, installers, updater paths, package metadata, Worker services, and runbooks exist. | Signed cross-OS install/update/rollback proof and one coherent current release-evidence index are missing. |
+| Connectors and integrations | MCP, OTLP, LLM-gateway, robotics, intake, sidecar, and dataset seams are present. | No maintained adapter or conformance test connects the six audited portfolio products. |
+| Agent UX | Aura IDE Kit includes workbench primitives relevant to agent and evidence experiences. | No complete agent session, graph debugging, tool approval, or trace-to-evidence workflow is delivered here. |
+| Human-in-the-loop | Proofline and IDE components can present evidence, status, problems, and consent surfaces. | Product-level review queues, adjudication, escalation, and audit closure remain consumer responsibilities and are unverified. |
+| Evaluation | Unit tests, CI, schemas, verifier scripts, and readiness JSON provide local checks. | Full clean reruns, hosted matrices, comparative benchmarks, and immutable retained evidence are incomplete. |
+| Domain workflows | Robotics and AI extension seams support specialized products without embedding their logic. | Domain workflows belong to consumers; no end-to-end portfolio integration is currently proven. |
 
 ## Scoring posture
 
