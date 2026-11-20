@@ -1,5 +1,7 @@
 # AuraOne Open Studio Platform
 
+> Internal infrastructure for AuraOne Studios (Rubric, Agent, Robotics Studio Open). Not a standalone product; see [AuraOne Open](https://auraone.ai/open) for developer tools.
+
 AuraOne Open Studio Platform is the shared, product-neutral substrate for
 Rubric Studio Open, Agent Studio Open, and Robotics Studio Open. Its job is to
 keep the three products on one auditable contract for accessible IDE surfaces,

@@ -1,7 +1,7 @@
 {
   "name": "@auraone/platform-contracts",
   "version": "0.3.0",
-  "description": "Runtime-neutral TypeScript contracts for trust, intake, telemetry, updates, and extensions in AuraOne Open Studio.",
+  "description": "Internal AuraOne Studio infrastructure: Runtime-neutral TypeScript contracts for trust, intake, telemetry, updates, and extensions in AuraOne Open Studio.",
   "keywords": [
     "auraone",
     "open-studio",
