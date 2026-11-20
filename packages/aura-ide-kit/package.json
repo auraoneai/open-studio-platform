@@ -1,7 +1,7 @@
 {
   "name": "@auraone/aura-ide-kit",
   "version": "0.2.1",
-  "description": "Accessible IDE components and SSR posture contracts for AuraOne Open Studio apps.",
+  "description": "Internal AuraOne Studio infrastructure: Accessible IDE components and SSR posture contracts for AuraOne Open Studio apps.",
   "keywords": [
     "auraone",
     "open-studio",
